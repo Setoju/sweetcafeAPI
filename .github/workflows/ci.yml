@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  commit:
   pull_request:
   push:
     branches: [ main ]
