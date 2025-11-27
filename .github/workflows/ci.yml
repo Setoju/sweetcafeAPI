@@ -7,41 +7,41 @@ on:
 
 jobs:
   scan_ruby:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: .ruby-version
-        bundler-cache: true
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
 
-    - name: Make Brakeman executable
-      run: chmod +x bin/brakeman
+      - name: Make Brakeman executable
+        run: chmod +x bin/brakeman
 
-    - name: Scan for common Rails security vulnerabilities using static analysis
-      run: bin/brakeman --no-pager
+      - name: Scan for common Rails security vulnerabilities using static analysis
+        run: bin/brakeman --no-pager
 
   lint:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: .ruby-version
-        bundler-cache: true
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
 
-    - name: Make RuboCop executable
-      run: chmod +x bin/rubocop
+      - name: Make RuboCop executable
+        run: chmod +x bin/rubocop
 
-    - name: Lint code for consistent style
-      run: bin/rubocop -f github
+      - name: Lint code for consistent style
+        run: bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
