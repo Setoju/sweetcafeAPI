@@ -7,8 +7,7 @@ class MenuItem < ApplicationRecord
                    uniqueness: { scope: :category_id, case_sensitive: false, message: "already exists in this category" }
   validates :price, presence: true,
                     numericality: { greater_than: 0, less_than_or_equal_to: 10000, message: "must be between 0 and 10,000" }
-  validates :size, inclusion: { in: %w[small medium large extra_large], message: "%{value} is not a valid size" },
-                   allow_blank: true
+  validates :size, presence: true, numericality: { only_integer: true, greater_than: 0, message: "must be positive" }
   validates :description, length: { maximum: 1000 }, allow_blank: true
   validates :image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "must be a valid URL" },
                         allow_blank: true,
