@@ -31,7 +31,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_25_134315) do
     t.string "delivery_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "postal_code"
     t.string "phone"
     t.string "delivery_status", default: "pending"
     t.datetime "delivered_at"
@@ -48,7 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_25_134315) do
     t.text "description"
     t.boolean "available", default: true
     t.string "image_url"
-    t.integer "quantity"
+    t.integer "quantity", default: 0, null: false
     t.index ["category_id"], name: "index_menu_items_on_category_id"
   end
 
