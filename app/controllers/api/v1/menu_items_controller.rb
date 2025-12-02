@@ -81,6 +81,7 @@ module Api
         response = {
           id: menu_item.id,
           name: menu_item.name,
+          size: menu_item.size,
           description: menu_item.description,
           price: menu_item.price.to_f,
           available: menu_item.available,
