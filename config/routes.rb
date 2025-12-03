@@ -33,6 +33,14 @@ Rails.application.routes.draw do
           get :orders
         end
       end
+
+      # Cart routes
+      get 'cart', to: 'cart_items#index'
+      post 'cart', to: 'cart_items#create'
+      delete 'cart/clear', to: 'cart_items#clear'
+      patch 'cart/:id', to: 'cart_items#update'
+      put 'cart/:id', to: 'cart_items#update'
+      delete 'cart/:id', to: 'cart_items#destroy'
     end
   end
 
