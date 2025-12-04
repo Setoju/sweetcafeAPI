@@ -11,12 +11,10 @@ module Api
       def index
         @menu_items = MenuItem.includes(:category).all
         
-        # Filter by category if provided
-        if params[:category].present?
-          @menu_items = @menu_items.joins(:category).where(categories: { name: params[:category] })
+        if params[:category_id].present?
+          @menu_items = @menu_items.where(category_id: params[:category_id])
         end
         
-        # Filter by availability if provided
         @menu_items = @menu_items.where(available: params[:available]) if params[:available].present?
 
         render json: {
