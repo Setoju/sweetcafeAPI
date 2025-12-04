@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sweetcafe-api
+    env: ruby
+    buildCommand: bundle install; bundle exec rake db:migrate
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sweetcafe-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: RAILS_ENV
+        value: production
+
+databases:
+  - name: sweetcafe-db
+    databaseName: sweetcafe_production
+    user: sweetcafe
