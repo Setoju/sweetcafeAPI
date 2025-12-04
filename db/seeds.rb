@@ -21,8 +21,8 @@ admin = User.create!(
   name: "Admin User",
   email: "admin@sweetcafe.com",
   phone: "1234567890",
-  password: "password123",
-  password_confirmation: "password123",
+  password: "Password123!",
+  password_confirmation: "Password123!",
   role: "admin"
 )
 
@@ -30,8 +30,8 @@ customer1 = User.create!(
   name: "John Doe",
   email: "john@example.com",
   phone: "5551234567",
-  password: "password123",
-  password_confirmation: "password123",
+  password: "Password123!",
+  password_confirmation: "Password123!",
   role: "customer"
 )
 
@@ -39,8 +39,8 @@ customer2 = User.create!(
   name: "Jane Smith",
   email: "jane@example.com",
   phone: "5559876543",
-  password: "password123",
-  password_confirmation: "password123",
+  password: "Password123!",
+  password_confirmation: "Password123!",
   role: "customer"
 )
 
@@ -262,7 +262,7 @@ puts "Created #{Order.count} orders"
 
 puts "Seeding completed!"
 puts "="*50
-puts "Admin User: admin@sweetcafe.com / password123"
-puts "Customer 1: john@example.com / password123"
-puts "Customer 2: jane@example.com / password123"
+puts "Admin User: admin@sweetcafe.com / Password123!"
+puts "Customer 1: john@example.com / Password123!"
+puts "Customer 2: jane@example.com / Password123!"
 puts "="*50
