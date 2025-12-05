@@ -9,7 +9,7 @@ class Delivery < ApplicationRecord
   validates :phone, presence: true,
                     format: { with: /\A[+]?[0-9\s().-]{10,20}\z/, message: "must be a valid phone number" },
                     length: { minimum: 10, maximum: 20 }
-  validates :delivery_method, inclusion: { in: %w[standard express pickup], message: "%{value} is not a valid delivery method" },
+  validates :delivery_method, inclusion: { in: ["by courier", "pickup"], message: "%{value} is not a valid delivery method" },
                             allow_blank: true
   validates :payment_method, inclusion: { in: %w[cash card online], message: "%{value} is not a valid payment method" },
                            allow_blank: true
