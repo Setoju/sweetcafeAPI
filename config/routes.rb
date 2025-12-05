@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       patch 'cart/:id', to: 'cart_items#update'
       put 'cart/:id', to: 'cart_items#update'
       delete 'cart/:id', to: 'cart_items#destroy'
+
+      # Deliveries routes
+      resources :deliveries, only: [:index, :show, :create, :update, :destroy]
     end
   end
 
