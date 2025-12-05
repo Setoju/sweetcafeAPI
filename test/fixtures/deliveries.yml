@@ -2,18 +2,18 @@
 
 one:
   order: one
-  delivery_type: MyString
+  delivery_method: MyString
   delivery_time: 2025-11-17 15:40:01
   city: MyString
   address: MyString
-  payment_type: MyString
+  payment_method: MyString
   notes: MyString
 
 two:
   order: two
-  delivery_type: MyString
+  delivery_method: MyString
   delivery_time: 2025-11-17 15:40:01
   city: MyString
   address: MyString
-  payment_type: MyString
+  payment_method: MyString
   notes: MyString

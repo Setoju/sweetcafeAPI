@@ -13,8 +13,8 @@ module Api
         # Filter by status if provided
         @deliveries = @deliveries.where(delivery_status: params[:status]) if params[:status].present?
         
-        # Filter by delivery type if provided
-        @deliveries = @deliveries.where(delivery_type: params[:delivery_type]) if params[:delivery_type].present?
+        # Filter by delivery method if provided
+        @deliveries = @deliveries.where(delivery_method: params[:delivery_method]) if params[:delivery_method].present?
 
         render json: {
           deliveries: @deliveries.map { |delivery| delivery_response(delivery) }
@@ -106,19 +106,20 @@ module Api
           :address,
           :city,
           :phone,
-          :delivery_type,
-          :payment_type,
+          :delivery_method,
+          :payment_method,
           :delivery_notes,
-          :delivery_time
+          :delivery_time,
+          :pickup_time
         )
       end
 
       def delivery_update_params
-        permitted = [:address, :city, :phone, :delivery_notes, :delivery_time]
+        permitted = [:address, :city, :phone, :delivery_notes, :delivery_time, :pickup_time]
         
         # Only admins can update these fields
         if current_user&.role == 'admin'
-          permitted += [:delivery_status, :delivery_type, :payment_type, :delivered_at]
+          permitted += [:delivery_status, :delivery_method, :payment_method, :delivered_at]
         end
         
         params.require(:delivery).permit(*permitted)
@@ -131,11 +132,12 @@ module Api
           address: delivery.address,
           city: delivery.city,
           phone: delivery.phone,
-          delivery_type: delivery.delivery_type,
-          payment_type: delivery.payment_type,
+          delivery_method: delivery.delivery_method,
+          payment_method: delivery.payment_method,
           delivery_status: delivery.delivery_status,
           delivery_notes: delivery.delivery_notes,
           delivery_time: delivery.delivery_time,
+          pickup_time: delivery.pickup_time,
           delivered_at: delivery.delivered_at,
           created_at: delivery.created_at
         }

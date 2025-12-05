@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_03_121149) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_05_170040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,17 +34,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_03_121149) do
 
   create_table "deliveries", force: :cascade do |t|
     t.bigint "order_id", null: false
-    t.string "delivery_type"
+    t.string "delivery_method"
     t.datetime "delivery_time"
     t.string "city"
     t.string "address"
-    t.string "payment_type"
+    t.string "payment_method"
     t.string "delivery_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone"
     t.string "delivery_status", default: "pending"
     t.datetime "delivered_at"
+    t.datetime "pickup_time"
     t.index ["order_id"], name: "index_deliveries_on_order_id"
   end
 
