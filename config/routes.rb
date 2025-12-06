@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'auth/signup', to: 'auth#signup'
       post 'auth/login', to: 'auth#login'
       get 'auth/me', to: 'auth#me'
+      patch 'auth/me', to: 'auth#update_profile'
       delete 'auth/signout', to: 'auth#signout'
 
       # Categories routes

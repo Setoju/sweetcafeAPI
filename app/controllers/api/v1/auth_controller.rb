@@ -42,6 +42,41 @@ module Api
         render json: { user: user_response(current_user) }, status: :ok
       end
 
+      # PATCH /api/v1/auth/me
+      def update_profile
+        update_params = {}
+        
+        # Add basic profile fields if present
+        update_params[:name] = params[:name] if params[:name].present?
+        update_params[:phone] = params[:phone] if params[:phone].present?
+        update_params[:email] = params[:email] if params[:email].present?
+        
+        # Handle password change
+        if params[:new_password].present?
+          unless params[:current_password].present?
+            render json: { errors: 'Current password is required to change password' }, status: :unprocessable_entity
+            return
+          end
+          
+          unless current_user.authenticate(params[:current_password])
+            render json: { errors: 'Current password is incorrect' }, status: :unauthorized
+            return
+          end
+          
+          update_params[:password] = params[:new_password]
+          update_params[:password_confirmation] = params[:password_confirmation]
+        end
+        
+        if current_user.update(update_params)
+          render json: { 
+            user: user_response(current_user),
+            message: 'Profile updated successfully'
+          }, status: :ok
+        else
+          render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       # DELETE /api/v1/auth/signout
       def signout
         # Token invalidation would typically be handled client-side or with a token blacklist
