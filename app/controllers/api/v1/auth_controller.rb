@@ -49,7 +49,6 @@ module Api
         # Add basic profile fields if present
         update_params[:name] = params[:name] if params[:name].present?
         update_params[:phone] = params[:phone] if params[:phone].present?
-        update_params[:email] = params[:email] if params[:email].present?
         
         # Handle password change
         if params[:new_password].present?
