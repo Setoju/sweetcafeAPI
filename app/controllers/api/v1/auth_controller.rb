@@ -85,7 +85,7 @@ module Api
       private
 
       def user_params
-        params.permit(:name, :email, :phone, :password, :password_confirmation, :role)
+        params.permit(:name, :email, :phone, :password, :password_confirmation)
       end
 
       def user_response(user)
