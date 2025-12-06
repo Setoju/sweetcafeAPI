@@ -2,9 +2,9 @@ class MenuItem < ApplicationRecord
   belongs_to :category
   has_many :order_items
   has_many :cart_items, dependent: :destroy
-  
+
   before_save :mark_unavailable_if_depleted
-  
+
   validates :name, presence: true,
                    length: { minimum: 2, maximum: 200 },
                    uniqueness: { scope: :category_id, case_sensitive: false, message: "already exists in this category" }
@@ -15,13 +15,13 @@ class MenuItem < ApplicationRecord
   validates :image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "must be a valid URL" },
                         allow_blank: true,
                         length: { maximum: 500 }
-  validates :available, inclusion: { in: [true, false] }
+  validates :available, inclusion: { in: [ true, false ] }
   validates :category, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "must be a non-negative integer" }
   validate :price_decimal_places
-  
+
   private
-  
+
   def mark_unavailable_if_depleted
     return unless will_save_change_to_quantity?
     return if will_save_change_to_available?
@@ -29,7 +29,7 @@ class MenuItem < ApplicationRecord
   end
 
   def price_decimal_places
-    if price.present? && price.to_s.include?('.') && price.to_s.split('.').last.length > 2
+    if price.present? && price.to_s.include?(".") && price.to_s.split(".").last.length > 2
       errors.add(:price, "can have at most 2 decimal places")
     end
   end

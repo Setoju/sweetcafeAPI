@@ -11,7 +11,7 @@ class OrderItem < ApplicationRecord
   validates :order, presence: true
   validates :menu_item, presence: true
   validate :subtotal_matches_calculation, if: -> { subtotal.present? && price.present? && total_quantity.present? }
-  
+
   before_save :calculate_subtotal
 
   private
@@ -19,7 +19,7 @@ class OrderItem < ApplicationRecord
   def calculate_subtotal
     self.subtotal = price * total_quantity if price.present? && total_quantity.present?
   end
-  
+
   def subtotal_matches_calculation
     calculated_subtotal = price * total_quantity
     if (subtotal - calculated_subtotal).abs > 0.01

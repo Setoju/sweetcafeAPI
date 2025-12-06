@@ -3,12 +3,12 @@
 module Api
   module V1
     class OrdersController < ApplicationController
-      before_action :set_order, only: [:show, :update, :cancel]
+      before_action :set_order, only: [ :show, :update, :cancel ]
 
       # GET /api/v1/orders
       def index
         @orders = current_user.orders.includes(:order_items, :delivery).order(created_at: :desc)
-        
+
         # Filter by status if provided
         @orders = @orders.where(status: params[:status]) if params[:status].present?
 
@@ -27,7 +27,7 @@ module Api
       # POST /api/v1/orders
       def create
         @order = current_user.orders.new(order_params.except(:order_items_attributes, :delivery_attributes))
-        @order.status = 'pending'
+        @order.status = "pending"
         @order.total_amount = 0
 
         ActiveRecord::Base.transaction do
@@ -38,20 +38,20 @@ module Api
               params[:order_items].each do |item_params|
                 menu_item = MenuItem.find(item_params[:menu_item_id])
                 quantity = item_params[:total_quantity].to_i
-                
+
                 order_item = @order.order_items.create!(
                   menu_item: menu_item,
                   total_quantity: quantity,
                   price: menu_item.price,
                   subtotal: menu_item.price * quantity
                 )
-                
+
                 total += order_item.subtotal
               end
-              
+
               @order.update!(total_amount: total)
             else
-              render json: { errors: 'No order items provided' }, status: :unprocessable_entity
+              render json: { errors: "No order items provided" }, status: :unprocessable_entity
               raise ActiveRecord::Rollback
             end
 
@@ -62,7 +62,7 @@ module Api
 
             render json: {
               order: order_response(@order, detailed: true),
-              message: 'Order created successfully'
+              message: "Order created successfully"
             }, status: :created
           else
             render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
@@ -78,7 +78,7 @@ module Api
         if @order.update(status: params[:status])
           render json: {
             order: order_response(@order, detailed: true),
-            message: 'Order updated successfully'
+            message: "Order updated successfully"
           }, status: :ok
         else
           render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
@@ -87,29 +87,29 @@ module Api
 
       # POST /api/v1/orders/:id/cancel
       def cancel
-        if @order.status == 'pending'
-          @order.update!(status: 'cancelled')
+        if @order.status == "pending"
+          @order.update!(status: "cancelled")
           render json: {
             order: order_response(@order),
-            message: 'Order cancelled successfully'
+            message: "Order cancelled successfully"
           }, status: :ok
         else
-          render json: { errors: 'Only pending orders can be cancelled' }, status: :unprocessable_entity
+          render json: { errors: "Only pending orders can be cancelled" }, status: :unprocessable_entity
         end
       end
 
       private
 
       def set_order
-        return render json: { errors: 'Unauthorized' }, status: :unauthorized unless current_user
-        
-        @order = if current_user.role == 'admin'
+        return render json: { errors: "Unauthorized" }, status: :unauthorized unless current_user
+
+        @order = if current_user.role == "admin"
           Order.includes(:order_items, :delivery, order_items: :menu_item).find(params[:id])
         else
           current_user.orders.includes(:order_items, :delivery, order_items: :menu_item).find(params[:id])
         end
       rescue ActiveRecord::RecordNotFound
-        render json: { errors: 'Order not found' }, status: :not_found
+        render json: { errors: "Order not found" }, status: :not_found
       end
 
       def order_params
@@ -129,7 +129,7 @@ module Api
           notes: order.notes,
           created_at: order.created_at
         }
-        
+
         if detailed
           response[:order_items] = order.order_items.map do |item|
             {
@@ -144,7 +144,7 @@ module Api
               subtotal: item.subtotal.to_f
             }
           end
-          
+
           if order.delivery
             response[:delivery] = {
               id: order.delivery.id,
@@ -157,10 +157,10 @@ module Api
               delivered_at: order.delivery.delivered_at
             }
           end
-          
+
           response[:updated_at] = order.updated_at
         end
-        
+
         response
       end
     end

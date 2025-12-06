@@ -11,17 +11,17 @@ class Order < ApplicationRecord
   validates :user, presence: true
   validate :must_have_order_items, on: :update
   validate :total_amount_matches_items, if: -> { total_amount.present? && order_items.any? }
-  
+
   enum :status, { pending: "pending", completed: "completed", delivered: "delivered", cancelled: "cancelled" }, default: :pending
-  
+
   private
-  
+
   def must_have_order_items
     if order_items.empty?
       errors.add(:base, "Order must have at least one item")
     end
   end
-  
+
   def total_amount_matches_items
     calculated_total = order_items.sum(&:subtotal)
     if calculated_total.present? && (total_amount - calculated_total).abs > 0.01

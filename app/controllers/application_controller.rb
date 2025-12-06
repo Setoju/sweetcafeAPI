@@ -6,19 +6,19 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::ParameterMissing, with: :bad_request
 
   def authenticate_user
-    header = request.headers['Authorization']
-    header = header.split(' ').last if header
-    
+    header = request.headers["Authorization"]
+    header = header.split(" ").last if header
+
     begin
       @decoded = JsonWebToken.decode(header)
       @current_user = User.find(@decoded[:user_id]) if @decoded
     rescue ActiveRecord::RecordNotFound => e
-      render json: { errors: 'Unauthorized' }, status: :unauthorized and return
+      render json: { errors: "Unauthorized" }, status: :unauthorized and return
     rescue JWT::DecodeError => e
-      render json: { errors: 'Unauthorized' }, status: :unauthorized and return
+      render json: { errors: "Unauthorized" }, status: :unauthorized and return
     end
-    
-    render json: { errors: 'Unauthorized' }, status: :unauthorized and return unless @current_user
+
+    render json: { errors: "Unauthorized" }, status: :unauthorized and return unless @current_user
   end
 
   attr_reader :current_user

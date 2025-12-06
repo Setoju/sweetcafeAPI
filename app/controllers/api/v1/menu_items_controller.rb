@@ -3,18 +3,18 @@
 module Api
   module V1
     class MenuItemsController < ApplicationController
-      before_action :set_menu_item, only: [:show, :update, :destroy]
-      before_action :authorize_admin, only: [:create, :update, :destroy]
-      skip_before_action :authenticate_user, only: [:index, :show]
+      before_action :set_menu_item, only: [ :show, :update, :destroy ]
+      before_action :authorize_admin, only: [ :create, :update, :destroy ]
+      skip_before_action :authenticate_user, only: [ :index, :show ]
 
       # GET /api/v1/menu_items
       def index
         @menu_items = MenuItem.includes(:category).all
-        
+
         if params[:category_id].present?
           @menu_items = @menu_items.where(category_id: params[:category_id])
         end
-        
+
         @menu_items = @menu_items.where(available: params[:available]) if params[:available].present?
 
         render json: {
@@ -32,11 +32,11 @@ module Api
       # POST /api/v1/menu_items
       def create
         @menu_item = MenuItem.new(menu_item_params)
-        
+
         if @menu_item.save
           render json: {
             menu_item: menu_item_response(@menu_item),
-            message: 'Menu item created successfully'
+            message: "Menu item created successfully"
           }, status: :created
         else
           render json: { errors: @menu_item.errors.full_messages }, status: :unprocessable_entity
@@ -48,7 +48,7 @@ module Api
         if @menu_item.update(menu_item_params)
           render json: {
             menu_item: menu_item_response(@menu_item),
-            message: 'Menu item updated successfully'
+            message: "Menu item updated successfully"
           }, status: :ok
         else
           render json: { errors: @menu_item.errors.full_messages }, status: :unprocessable_entity
@@ -58,13 +58,13 @@ module Api
       # DELETE /api/v1/menu_items/:id
       def destroy
         @menu_item.destroy
-        render json: { message: 'Menu item deleted successfully' }, status: :ok
+        render json: { message: "Menu item deleted successfully" }, status: :ok
       end
 
       private
 
       def authorize_admin
-        render json: { errors: 'Admin access required' }, status: :forbidden unless current_user.role == 'admin'
+        render json: { errors: "Admin access required" }, status: :forbidden unless current_user.role == "admin"
       end
 
       def set_menu_item
@@ -90,14 +90,14 @@ module Api
             name: menu_item.category.name
           }
         }
-        
+
         if detailed
           response.merge!({
             created_at: menu_item.created_at,
             updated_at: menu_item.updated_at
           })
         end
-        
+
         response
       end
     end

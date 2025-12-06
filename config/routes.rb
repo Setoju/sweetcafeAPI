@@ -9,42 +9,42 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # Authentication routes
-      post 'auth/signup', to: 'auth#signup'
-      post 'auth/login', to: 'auth#login'
-      get 'auth/me', to: 'auth#me'
-      patch 'auth/me', to: 'auth#update_profile'
-      delete 'auth/signout', to: 'auth#signout'
+      post "auth/signup", to: "auth#signup"
+      post "auth/login", to: "auth#login"
+      get "auth/me", to: "auth#me"
+      patch "auth/me", to: "auth#update_profile"
+      delete "auth/signout", to: "auth#signout"
 
       # Categories routes
-      resources :categories, only: [:index, :show, :create, :update, :destroy]
+      resources :categories, only: [ :index, :show, :create, :update, :destroy ]
 
       # Menu Items routes
-      resources :menu_items, only: [:index, :show, :create, :update, :destroy]
+      resources :menu_items, only: [ :index, :show, :create, :update, :destroy ]
 
       # Orders routes
-      resources :orders, only: [:index, :show, :create, :update] do
+      resources :orders, only: [ :index, :show, :create, :update ] do
         member do
           post :cancel
         end
       end
 
       # Users routes
-      resources :users, only: [:index, :show, :update, :destroy] do
+      resources :users, only: [ :index, :show, :update, :destroy ] do
         member do
           get :orders
         end
       end
 
       # Cart routes
-      get 'cart', to: 'cart_items#index'
-      post 'cart', to: 'cart_items#create'
-      delete 'cart/clear', to: 'cart_items#clear'
-      patch 'cart/:id', to: 'cart_items#update'
-      put 'cart/:id', to: 'cart_items#update'
-      delete 'cart/:id', to: 'cart_items#destroy'
+      get "cart", to: "cart_items#index"
+      post "cart", to: "cart_items#create"
+      delete "cart/clear", to: "cart_items#clear"
+      patch "cart/:id", to: "cart_items#update"
+      put "cart/:id", to: "cart_items#update"
+      delete "cart/:id", to: "cart_items#destroy"
 
       # Deliveries routes
-      resources :deliveries, only: [:index, :show, :create, :update, :destroy]
+      resources :deliveries, only: [ :index, :show, :create, :update, :destroy ]
     end
   end
 

@@ -3,8 +3,8 @@
 module Api
   module V1
     class CategoriesController < ApplicationController
-      before_action :set_category, only: [:show, :update, :destroy]
-      skip_before_action :authenticate_user, only: [:index, :show]
+      before_action :set_category, only: [ :show, :update, :destroy ]
+      skip_before_action :authenticate_user, only: [ :index, :show ]
 
       # GET /api/v1/categories
       def index
@@ -24,11 +24,11 @@ module Api
       # POST /api/v1/categories
       def create
         @category = Category.new(category_params)
-        
+
         if @category.save
           render json: {
             category: category_response(@category),
-            message: 'Category created successfully'
+            message: "Category created successfully"
           }, status: :created
         else
           render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
@@ -40,7 +40,7 @@ module Api
         if @category.update(category_params)
           render json: {
             category: category_response(@category),
-            message: 'Category updated successfully'
+            message: "Category updated successfully"
           }, status: :ok
         else
           render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
@@ -50,7 +50,7 @@ module Api
       # DELETE /api/v1/categories/:id
       def destroy
         @category.destroy
-        render json: { message: 'Category deleted successfully' }, status: :ok
+        render json: { message: "Category deleted successfully" }, status: :ok
       end
 
       private
@@ -71,7 +71,7 @@ module Api
           created_at: category.created_at,
           updated_at: category.updated_at
         }
-        
+
         if include_items
           response[:menu_items] = category.menu_items.map do |item|
             {
@@ -85,7 +85,7 @@ module Api
         else
           response[:menu_items_count] = category.menu_items.count
         end
-        
+
         response
       end
     end

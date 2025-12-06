@@ -27,7 +27,7 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 5).to_i
 threads threads_count, threads_count
 
-port        ENV.fetch("PORT", 3000).to_i
+port ENV.fetch("PORT", 3000).to_i
 
 workers ENV.fetch("WEB_CONCURRENCY", 1).to_i
 preload_app! if ENV.fetch("WEB_CONCURRENCY", 1).to_i > 1

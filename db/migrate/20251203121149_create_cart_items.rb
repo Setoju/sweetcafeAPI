@@ -7,7 +7,7 @@ class CreateCartItems < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    
-    add_index :cart_items, [:user_id, :menu_item_id], unique: true
+
+    add_index :cart_items, [ :user_id, :menu_item_id ], unique: true
   end
 end
