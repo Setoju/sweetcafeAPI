@@ -125,7 +125,7 @@ module Api
           id: order.id,
           status: order.status,
           total_amount: order.total_amount.to_f,
-          quantity: order.order_items.sum(:total_quantity),
+          items_quantity: order.order_items.sum(:total_quantity),
           notes: order.notes,
           created_at: order.created_at
         }
