@@ -124,7 +124,7 @@ module Api
       end
 
       def delivery_params
-        params.require(:delivery).permit(:address, :city, :postal_code, :phone, :delivery_notes, :delivery_method, :payment_method, :delivery_time, :pickup_time)
+        params.require(:delivery).permit(:address, :city, :phone, :delivery_notes, :delivery_method, :payment_method, :delivery_time, :pickup_time)
       end
 
       def order_response(order, detailed: false)
@@ -161,7 +161,6 @@ module Api
               id: delivery.id,
               address: delivery.address,
               city: delivery.city,
-              postal_code: delivery.postal_code,
               phone: delivery.phone,
               delivery_notes: delivery.delivery_notes,
               delivery_method: delivery.delivery_method,
