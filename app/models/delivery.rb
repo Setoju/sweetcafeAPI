@@ -2,10 +2,12 @@ class Delivery < ApplicationRecord
   belongs_to :order
 
   validates :address, presence: true,
-                      length: { minimum: 2, maximum: 50 }
+                      length: { minimum: 2, maximum: 50 },
+                      unless: -> { delivery_method == "pickup" }
   validates :city, presence: true,
                    length: { minimum: 2, maximum: 100 },
-                   format: { with: /\A[a-zA-Z\s'-]+\z/, message: "can only contain letters, spaces, hyphens, and apostrophes" }
+                   format: { with: /\A[a-zA-Z\s'-]+\z/, message: "can only contain letters, spaces, hyphens, and apostrophes" },
+                   unless: -> { delivery_method == "pickup" }
   validates :phone, presence: true,
                     format: { with: /\A[+]?[0-9\s().-]{10,20}\z/, message: "must be a valid phone number" },
                     length: { minimum: 10, maximum: 20 }
