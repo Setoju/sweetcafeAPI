@@ -22,6 +22,10 @@ module Api
         render json: {
           order: order_response(@order, detailed: true)
         }, status: :ok
+      rescue StandardError => e
+        Rails.logger.error "Error in orders#show: #{e.message}"
+        Rails.logger.error e.backtrace.join("\n")
+        render json: { errors: "Internal server error" }, status: :internal_server_error
       end
 
       # POST /api/v1/orders
@@ -110,6 +114,9 @@ module Api
         end
       rescue ActiveRecord::RecordNotFound
         render json: { errors: "Order not found" }, status: :not_found
+      rescue StandardError => e
+        Rails.logger.error "Error in set_order: #{e.message}"
+        render json: { errors: "Internal server error" }, status: :internal_server_error
       end
 
       def order_params
@@ -121,17 +128,19 @@ module Api
       end
 
       def order_response(order, detailed: false)
+        return {} unless order
+
         response = {
           id: order.id,
           status: order.status,
-          total_amount: order.total_amount.to_f,
-          items_quantity: order.order_items.sum(:total_quantity),
+          total_amount: order.total_amount&.to_f || 0.0,
+          items_quantity: order.order_items&.sum(:total_quantity) || 0,
           notes: order.notes,
           created_at: order.created_at
         }
 
         if detailed
-          response[:order_items] = order.order_items.map do |item|
+          response[:order_items] = (order.order_items || []).map do |item|
             menu_item = item.menu_item
             {
               id: item.id,
@@ -141,8 +150,8 @@ module Api
                 description: menu_item.description
               } : nil,
               quantity: item.total_quantity,
-              price: item.price.to_f,
-              subtotal: item.subtotal.to_f
+              price: item.price&.to_f || 0.0,
+              subtotal: item.subtotal&.to_f || 0.0
             }
           end
 
