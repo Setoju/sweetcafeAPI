@@ -147,8 +147,8 @@ module Api
               menu_item: menu_item ? {
                 id: menu_item.id,
                 name: menu_item.name,
-                description: menu_item.description
-                size: menu_item.size,
+                description: menu_item.description,
+                size: menu_item.size
               } : nil,
               quantity: item.total_quantity,
               price: item.price&.to_f || 0.0,
