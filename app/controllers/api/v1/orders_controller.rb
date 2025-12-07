@@ -117,7 +117,7 @@ module Api
       end
 
       def delivery_params
-        params.require(:delivery).permit(:address, :city, :postal_code, :phone, :delivery_notes)
+        params.require(:delivery).permit(:address, :city, :postal_code, :phone, :delivery_notes, :delivery_method, :payment_method, :delivery_time, :pickup_time)
       end
 
       def order_response(order, detailed: false)
@@ -132,13 +132,14 @@ module Api
 
         if detailed
           response[:order_items] = order.order_items.map do |item|
+            menu_item = item.menu_item
             {
               id: item.id,
-              menu_item: {
-                id: item.menu_item.id,
-                name: item.menu_item.name,
-                description: item.menu_item.description
-              },
+              menu_item: menu_item ? {
+                id: menu_item.id,
+                name: menu_item.name,
+                description: menu_item.description
+              } : nil,
               quantity: item.total_quantity,
               price: item.price.to_f,
               subtotal: item.subtotal.to_f
@@ -146,15 +147,20 @@ module Api
           end
 
           if order.delivery
+            delivery = order.delivery
             response[:delivery] = {
-              id: order.delivery.id,
-              address: order.delivery.address,
-              city: order.delivery.city,
-              postal_code: order.delivery.postal_code,
-              phone: order.delivery.phone,
-              delivery_notes: order.delivery.delivery_notes,
-              delivery_status: order.delivery.delivery_status,
-              delivered_at: order.delivery.delivered_at
+              id: delivery.id,
+              address: delivery.address,
+              city: delivery.city,
+              postal_code: delivery.postal_code,
+              phone: delivery.phone,
+              delivery_notes: delivery.delivery_notes,
+              delivery_method: delivery.delivery_method,
+              payment_method: delivery.payment_method,
+              delivery_status: delivery.delivery_status,
+              delivery_time: delivery.delivery_time,
+              pickup_time: delivery.pickup_time,
+              delivered_at: delivery.delivered_at
             }
           end
 
