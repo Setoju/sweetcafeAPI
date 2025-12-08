@@ -3,6 +3,8 @@
 module Api
   module V1
     class CartItemsController < ApplicationController
+      include InventoryValidator
+      
       before_action :authenticate_user
       before_action :set_cart_item, only: [ :update, :destroy ]
 
@@ -28,9 +30,10 @@ module Api
           # Update quantity if item exists
           new_quantity = @cart_item.total_quantity + (params[:total_quantity] || 1).to_i
 
-          if new_quantity > menu_item.quantity
+          validation_result = validate_inventory_availability(menu_item, new_quantity)
+          unless validation_result[:valid]
             render json: {
-              errors: [ "Cannot add more items. Only #{menu_item.quantity} available." ]
+              errors: [ validation_result[:error] ]
             }, status: :unprocessable_entity
             return
           end

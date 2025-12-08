@@ -3,6 +3,8 @@
 module Api
   module V1
     class OrdersController < ApplicationController
+      include InventoryValidator
+      
       before_action :set_order, only: [ :show, :update, :cancel ]
 
       # GET /api/v1/orders
@@ -38,6 +40,14 @@ module Api
           if @order.save
             # Create order items
             if params[:order_items].present?
+              # Validate inventory before creating order items
+              inventory_errors = validate_multiple_items_inventory(params[:order_items])
+              
+              if inventory_errors.any?
+                render json: { errors: inventory_errors }, status: :unprocessable_entity
+                raise ActiveRecord::Rollback
+              end
+              
               total = 0
               params[:order_items].each do |item_params|
                 menu_item = MenuItem.find(item_params[:menu_item_id])
@@ -49,6 +59,9 @@ module Api
                   price: menu_item.price,
                   subtotal: menu_item.price * quantity
                 )
+
+                # Reduce inventory after successful order item creation
+                menu_item.update!(quantity: menu_item.quantity - quantity)
 
                 total += order_item.subtotal
               end
@@ -92,7 +105,18 @@ module Api
       # POST /api/v1/orders/:id/cancel
       def cancel
         if @order.status == "pending"
-          @order.update!(status: "cancelled")
+          ActiveRecord::Base.transaction do
+            # Restore inventory for each order item
+            @order.order_items.each do |order_item|
+              menu_item = order_item.menu_item
+              if menu_item
+                menu_item.update!(quantity: menu_item.quantity + order_item.total_quantity)
+              end
+            end
+            
+            @order.update!(status: "cancelled")
+          end
+          
           render json: {
             order: order_response(@order),
             message: "Order cancelled successfully"
@@ -100,6 +124,8 @@ module Api
         else
           render json: { errors: "Only pending orders can be cancelled" }, status: :unprocessable_entity
         end
+      rescue ActiveRecord::RecordInvalid => e
+        render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
       end
 
       private
