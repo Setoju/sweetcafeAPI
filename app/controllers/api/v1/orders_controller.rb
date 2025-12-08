@@ -4,7 +4,7 @@ module Api
   module V1
     class OrdersController < ApplicationController
       include InventoryValidator
-      
+
       before_action :set_order, only: [ :show, :update, :cancel ]
 
       # GET /api/v1/orders
@@ -42,12 +42,12 @@ module Api
             if params[:order_items].present?
               # Validate inventory before creating order items
               inventory_errors = validate_multiple_items_inventory(params[:order_items])
-              
+
               if inventory_errors.any?
                 render json: { errors: inventory_errors }, status: :unprocessable_entity
                 raise ActiveRecord::Rollback
               end
-              
+
               total = 0
               params[:order_items].each do |item_params|
                 menu_item = MenuItem.find(item_params[:menu_item_id])
@@ -113,10 +113,10 @@ module Api
                 menu_item.update!(available_quantity: menu_item.available_quantity + order_item.total_quantity)
               end
             end
-            
+
             @order.update!(status: "cancelled")
           end
-          
+
           render json: {
             order: order_response(@order),
             message: "Order cancelled successfully"

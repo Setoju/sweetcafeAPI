@@ -11,9 +11,9 @@ module InventoryValidator
     end
 
     if requested_quantity > menu_item.available_quantity
-      return { 
-        valid: false, 
-        error: "#{menu_item.name}: only #{menu_item.available_quantity} available, but #{requested_quantity} requested" 
+      return {
+        valid: false,
+        error: "#{menu_item.name}: only #{menu_item.available_quantity} available, but #{requested_quantity} requested"
       }
     end
 
@@ -28,7 +28,7 @@ module InventoryValidator
       requested_quantity = item_params[:total_quantity].to_i
 
       validation_result = validate_inventory_availability(menu_item, requested_quantity)
-      
+
       unless validation_result[:valid]
         errors << validation_result[:error]
       end

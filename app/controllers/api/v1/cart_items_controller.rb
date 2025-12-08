@@ -4,7 +4,7 @@ module Api
   module V1
     class CartItemsController < ApplicationController
       include InventoryValidator
-      
+
       before_action :authenticate_user
       before_action :set_cart_item, only: [ :update, :destroy ]
 
