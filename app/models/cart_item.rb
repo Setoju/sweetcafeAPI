@@ -25,8 +25,8 @@ class CartItem < ApplicationRecord
   def quantity_must_not_exceed_stock
     return unless menu_item.present? && total_quantity.present?
 
-    if total_quantity > menu_item.quantity
-      errors.add(:total_quantity, "exceeds available stock (#{menu_item.quantity} available)")
+    if total_quantity > menu_item.available_quantity
+      errors.add(:total_quantity, "exceeds available stock (#{menu_item.available_quantity} available)")
     end
   end
 end

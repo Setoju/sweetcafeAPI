@@ -17,15 +17,15 @@ class MenuItem < ApplicationRecord
                         length: { maximum: 500 }
   validates :available, inclusion: { in: [ true, false ] }
   validates :category, presence: true
-  validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "must be a non-negative integer" }
+  validates :available_quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "must be a non-negative integer" }
   validate :price_decimal_places
 
   private
 
   def mark_unavailable_if_depleted
-    return unless will_save_change_to_quantity?
+    return unless will_save_change_to_available_quantity?
     return if will_save_change_to_available?
-    self.available = quantity.to_i > 0
+    self.available = available_quantity.to_i > 0
   end
 
   def price_decimal_places

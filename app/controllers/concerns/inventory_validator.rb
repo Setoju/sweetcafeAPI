@@ -10,10 +10,10 @@ module InventoryValidator
       return { valid: false, error: "#{menu_item.name} is currently unavailable" }
     end
 
-    if requested_quantity > menu_item.quantity
+    if requested_quantity > menu_item.available_quantity
       return { 
         valid: false, 
-        error: "#{menu_item.name}: only #{menu_item.quantity} available, but #{requested_quantity} requested" 
+        error: "#{menu_item.name}: only #{menu_item.available_quantity} available, but #{requested_quantity} requested" 
       }
     end
 

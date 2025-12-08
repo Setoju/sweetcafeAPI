@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_05_170040) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_08_133413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_05_170040) do
     t.text "description"
     t.boolean "available", default: true
     t.string "image_url"
-    t.integer "quantity", default: 0, null: false
+    t.integer "available_quantity", default: 0, null: false
     t.index ["category_id"], name: "index_menu_items_on_category_id"
   end
 

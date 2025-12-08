@@ -83,7 +83,7 @@ module Api
           description: menu_item.description,
           price: menu_item.price.to_f,
           available: menu_item.available,
-          quantity: menu_item.quantity,
+          available_quantity: menu_item.available_quantity,
           image_url: menu_item.image_url,
           category: {
             id: menu_item.category.id,

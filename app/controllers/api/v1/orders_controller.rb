@@ -61,7 +61,7 @@ module Api
                 )
 
                 # Reduce inventory after successful order item creation
-                menu_item.update!(quantity: menu_item.quantity - quantity)
+                menu_item.update!(available_quantity: menu_item.available_quantity - quantity)
 
                 total += order_item.subtotal
               end
@@ -110,7 +110,7 @@ module Api
             @order.order_items.each do |order_item|
               menu_item = order_item.menu_item
               if menu_item
-                menu_item.update!(quantity: menu_item.quantity + order_item.total_quantity)
+                menu_item.update!(available_quantity: menu_item.available_quantity + order_item.total_quantity)
               end
             end
             

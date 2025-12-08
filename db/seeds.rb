@@ -193,8 +193,8 @@ MenuItem.create!([
 
 puts "Created #{MenuItem.count} menu items"
 
-MenuItem.where(quantity: 0).find_each do |item|
-  item.update!(quantity: rand(10..100))
+MenuItem.where(available_quantity: 0).find_each do |item|
+  item.update!(available_quantity: rand(10..100))
 end
 
 # Create Sample Orders

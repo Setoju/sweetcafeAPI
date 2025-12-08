@@ -109,7 +109,7 @@ module Api
             size: menu_item.size,
             price: menu_item.price.to_f,
             available: menu_item.available,
-            quantity_available: menu_item.quantity,
+            quantity_available: menu_item.available_quantity,
             image_url: menu_item.image_url,
             category: {
               id: menu_item.category.id,
