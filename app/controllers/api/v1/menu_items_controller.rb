@@ -72,7 +72,7 @@ module Api
       end
 
       def menu_item_params
-        params.require(:menu_item).permit(:name, :description, :price, :category_id, :available, :image_url, :available_quantity)
+        params.require(:menu_item).permit(:name, :description, :size, :price, :category_id, :available, :image_url, :available_quantity)
       end
 
       def menu_item_response(menu_item, detailed: false)
