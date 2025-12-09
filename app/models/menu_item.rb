@@ -3,6 +3,7 @@ class MenuItem < ApplicationRecord
   has_many :order_items
   has_many :cart_items, dependent: :destroy
 
+  before_destroy :check_pending_orders
   before_save :mark_unavailable_if_depleted
 
   validates :name, presence: true,
@@ -20,7 +21,27 @@ class MenuItem < ApplicationRecord
   validates :available_quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "must be a non-negative integer" }
   validate :price_decimal_places
 
+  def has_pending_orders?
+    order_items.joins(:order).where(orders: { status: 'pending' }).exists?
+  end
+
+  def can_be_deleted?
+    !has_pending_orders?
+  end
+
+  def deletion_blocked_reason
+    return "There are pending orders containing this item" if has_pending_orders?
+    nil
+  end
+
   private
+
+  def check_pending_orders
+    if has_pending_orders?
+      errors.add(:base, "Cannot delete menu item. There are pending orders containing this item.")
+      throw(:abort)
+    end
+  end
 
   def mark_unavailable_if_depleted
     return unless will_save_change_to_available_quantity?

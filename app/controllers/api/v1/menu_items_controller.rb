@@ -57,8 +57,13 @@ module Api
 
       # DELETE /api/v1/menu_items/:id
       def destroy
-        @menu_item.destroy
-        render json: { message: "Menu item deleted successfully" }, status: :ok
+        if @menu_item.destroy
+          render json: { message: "Menu item deleted successfully" }, status: :ok
+        else
+          # The before_destroy callback will add errors if there are pending orders
+          errors = @menu_item.errors.any? ? @menu_item.errors.full_messages : ["Failed to delete menu item"]
+          render json: { errors: errors }, status: :unprocessable_entity
+        end
       end
 
       private
