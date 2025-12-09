@@ -19,3 +19,6 @@ end
 # Configure OmniAuth for API-only mode
 OmniAuth.config.allowed_request_methods = [ :post, :get ]
 OmniAuth.config.silence_get_warning = true
+
+# Disable session requirement for test mode
+OmniAuth.config.test_mode = false
