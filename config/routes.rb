@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       patch "auth/me", to: "auth#update_profile"
       delete "auth/signout", to: "auth#signout"
 
+      # OAuth routes
+      post "auth/google", to: "oauth#google"
+      get "auth/google/callback", to: "oauth#google_callback"
+      post "auth/google/callback", to: "oauth#google_callback"
+
       # Categories routes
       resources :categories, only: [ :index, :show, :create, :update, :destroy ]
 
