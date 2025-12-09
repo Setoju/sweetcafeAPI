@@ -1,6 +1,6 @@
 class OrderItem < ApplicationRecord
   belongs_to :order
-  belongs_to :menu_item
+  belongs_to :menu_item, optional: true
 
   validates :total_quantity, presence: true,
                        numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 100, message: "must be between 1 and 100" }
@@ -9,7 +9,7 @@ class OrderItem < ApplicationRecord
   validates :subtotal, numericality: { greater_than: 0, less_than_or_equal_to: 1000000 },
                        allow_nil: true
   validates :order, presence: true
-  validates :menu_item, presence: true
+  validates :menu_item, presence: true, on: :create
   validate :subtotal_matches_calculation, if: -> { subtotal.present? && price.present? && total_quantity.present? }
 
   before_save :calculate_subtotal
