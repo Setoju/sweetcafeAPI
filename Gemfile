@@ -16,8 +16,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "jwt"
 
 # Google OAuth2 authentication
-gem "omniauth-google-oauth2"
-gem "omniauth-rails_csrf_protection"
+gem "signet"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
