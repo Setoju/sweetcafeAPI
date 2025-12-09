@@ -22,7 +22,7 @@ class MenuItem < ApplicationRecord
   validate :price_decimal_places
 
   def has_pending_orders?
-    order_items.joins(:order).where(orders: { status: 'pending' }).exists?
+    order_items.joins(:order).where(orders: { status: "pending" }).exists?
   end
 
   def can_be_deleted?
