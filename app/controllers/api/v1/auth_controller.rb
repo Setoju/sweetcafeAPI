@@ -78,7 +78,6 @@ module Api
 
       # DELETE /api/v1/auth/signout
       def signout
-        # Token invalidation would typically be handled client-side or with a token blacklist
         render json: { message: "Signed out successfully" }, status: :ok
       end
 
