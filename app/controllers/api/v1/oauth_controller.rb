@@ -23,7 +23,6 @@ module Api
 
         render json: {
           authorization_url: authorization_url,
-          state: state,
           message: "Redirect user to this URL to authenticate with Google"
         }, status: :ok
       rescue StandardError => e
