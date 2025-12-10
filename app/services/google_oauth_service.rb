@@ -16,7 +16,7 @@ class GoogleOauthService
   end
 
   # Generate the Google OAuth authorization URL
-  def authorization_url
+  def authorization_url(state = nil)
     params = {
       client_id: @client_id,
       redirect_uri: @redirect_uri,
@@ -25,6 +25,8 @@ class GoogleOauthService
       access_type: "offline",
       prompt: "consent"
     }
+
+    params[:state] = state if state.present?
 
     "#{GOOGLE_AUTH_URL}?#{URI.encode_www_form(params)}"
   end

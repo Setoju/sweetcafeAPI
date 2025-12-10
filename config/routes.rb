@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       post "auth/google", to: "oauth#google"
       get "auth/google/callback", to: "oauth#google_callback"
       post "auth/google/callback", to: "oauth#google_callback"
+      post "auth/google/exchange", to: "oauth#exchange_code"
 
       # Categories routes
       resources :categories, only: [ :index, :show, :create, :update, :destroy ]
