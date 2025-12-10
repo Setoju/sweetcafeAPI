@@ -27,14 +27,30 @@ class User < ApplicationRecord
   def self.from_google_oauth(google_user_info)
     provider = "google"
     uid = google_user_info["id"]
+    email = google_user_info["email"]
 
-    user = where(provider: provider, uid: uid).first_or_initialize
+    # First, try to find user by provider and uid (existing Google OAuth user)
+    user = where(provider: provider, uid: uid).first
 
-    if user.new_record?
-      user.email = google_user_info["email"]
-      user.name = google_user_info["name"] || google_user_info["email"].split("@").first
-      user.password = SecureRandom.hex(32)
-      user.role = "customer"
+    # If not found, check if user exists with this email (regular signup)
+    if user.nil?
+      user = find_by(email: email)
+
+      if user
+        # Link existing account to Google OAuth
+        user.provider = provider
+        user.uid = uid
+      else
+        # Create new user
+        user = new(
+          email: email,
+          name: google_user_info["name"] || email.split("@").first,
+          password: SecureRandom.hex(32),
+          role: "customer",
+          provider: provider,
+          uid: uid
+        )
+      end
     end
 
     # Update OAuth token info on every login
