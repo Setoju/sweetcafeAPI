@@ -281,52 +281,1560 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Auth API</dt>
+  <dt id="example_group_1" class="passed">CartItem</dt>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">POST /api/v1/auth/signup</dt>
-    <script type="text/javascript">moveProgressBar('12.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">creates a new user and returns JWT token</span><span class='duration'>0.28782s</span></dd>
+  <dt id="example_group_2" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('0.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to user required: true</span><span class='duration'>0.54637s</span></dd>
+    <script type="text/javascript">moveProgressBar('0.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to menu_item required: true</span><span class='duration'>0.00370s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">POST /api/v1/auth/login</dt>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns JWT token</span><span class='duration'>0.01320s</span></dd>
+  <dt id="example_group_3" class="passed">validations</dt>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_4" class="passed">Categories API</dt>
-    <script type="text/javascript">moveProgressBar('37.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">creates category successfully</span><span class='duration'>0.06944s</span></dd>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">fails validation with empty name</span><span class='duration'>0.49653s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_4" class="passed">total_quantity validations</dt>
+    <script type="text/javascript">moveProgressBar('0.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :total_quantity cannot be empty/falsy</span><span class='duration'>0.02693s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_quantity to be ‹1›</span><span class='duration'>0.00511s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_quantity to be ‹10›</span><span class='duration'>0.00455s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_quantity to be ‹0›</span><span class='duration'>0.00507s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_quantity to be ‹-1›</span><span class='duration'>0.00454s</span></dd>
+    <script type="text/javascript">moveProgressBar('2.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates numericality with only_integer and greater_than 0</span><span class='duration'>0.00656s</span></dd>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_5" class="passed">Menu Items API</dt>
-    <script type="text/javascript">moveProgressBar('62.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">filters menu items by category</span><span class='duration'>0.01324s</span></dd>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">creates a menu item</span><span class='duration'>0.03579s</span></dd>
-    <script type="text/javascript">moveProgressBar('87.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">CRUD: show, update and delete menu item</span><span class='duration'>0.05567s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_5" class="passed">user validation</dt>
+    <script type="text/javascript">moveProgressBar('2.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :user cannot be empty/falsy</span><span class='duration'>0.00681s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_6" class="passed">Protected Access</dt>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">rejects unauthorized access to users list</span><span class='duration'>0.00710s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_6" class="passed">menu_item validation</dt>
+    <script type="text/javascript">moveProgressBar('2.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :menu_item cannot be empty/falsy</span><span class='duration'>0.00652s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.99493 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "8 examples, 0 failures";</script>
+<div id="div_group_7" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_7" class="passed">uniqueness validation</dt>
+    <script type="text/javascript">moveProgressBar('2.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates uniqueness of menu_item_id scoped to user_id</span><span class='duration'>0.03717s</span></dd>
+  </dl>
+</div>
+<div id="div_group_8" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_8" class="passed">custom validations</dt>
+  </dl>
+</div>
+<div id="div_group_9" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_9" class="passed">menu_item_must_be_available</dt>
+    <script type="text/javascript">moveProgressBar('3.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates menu item is available</span><span class='duration'>0.01229s</span></dd>
+    <script type="text/javascript">moveProgressBar('3.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows available menu items</span><span class='duration'>0.01161s</span></dd>
+  </dl>
+</div>
+<div id="div_group_10" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_10" class="passed">quantity_must_not_exceed_stock</dt>
+    <script type="text/javascript">moveProgressBar('3.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates quantity does not exceed available stock</span><span class='duration'>0.01123s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows quantity within stock limits</span><span class='duration'>0.01102s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows quantity equal to available stock</span><span class='duration'>0.01070s</span></dd>
+  </dl>
+</div>
+<div id="div_group_11" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_11" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('4.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00499s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates cart item with large quantity</span><span class='duration'>0.01576s</span></dd>
+    <script type="text/javascript">moveProgressBar('5.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates cart item with single item</span><span class='duration'>0.01771s</span></dd>
+    <script type="text/javascript">moveProgressBar('5.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">prevents duplicate cart items for same user and menu item</span><span class='duration'>0.02098s</span></dd>
+  </dl>
+</div>
+<div id="div_group_12" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_12" class="passed">dependent destroy</dt>
+    <script type="text/javascript">moveProgressBar('5.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is destroyed when menu item is destroyed</span><span class='duration'>0.05259s</span></dd>
+    <script type="text/javascript">moveProgressBar('5.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is destroyed when user is destroyed</span><span class='duration'>0.05257s</span></dd>
+  </dl>
+</div>
+<div id="div_group_13" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_13" class="passed">Category</dt>
+  </dl>
+</div>
+<div id="div_group_14" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_14" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('6.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many menu_items dependent =&gt; destroy</span><span class='duration'>0.00229s</span></dd>
+  </dl>
+</div>
+<div id="div_group_15" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_15" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_16" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_16" class="passed">name validations</dt>
+    <script type="text/javascript">moveProgressBar('6.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :name cannot be empty/falsy</span><span class='duration'>0.00786s</span></dd>
+    <script type="text/javascript">moveProgressBar('6.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :name is between 2 and 100</span><span class='duration'>0.00698s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates uniqueness of name (case insensitive)</span><span class='duration'>0.00647s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;Beverages&quot;›</span><span class='duration'>0.00270s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;Coffee &amp; Tea&quot;›</span><span class='duration'>0.00339s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;Baker&#39;s Choice&quot;›</span><span class='duration'>0.00258s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;Main-Courses&quot;›</span><span class='duration'>0.00378s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :name to be ‹&quot;Category!@#&quot;›</span><span class='duration'>0.00284s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :name to be ‹&quot;Category_Name&quot;›</span><span class='duration'>0.00349s</span></dd>
+  </dl>
+</div>
+<div id="div_group_17" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_17" class="passed">description validations</dt>
+    <script type="text/javascript">moveProgressBar('8.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :description is at most 500</span><span class='duration'>0.00417s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :description to be ‹&quot;&quot;›</span><span class='duration'>0.00377s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :description to be ‹nil›</span><span class='duration'>0.00296s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :description to be ‹&quot;A delicious category&quot;›</span><span class='duration'>0.00250s</span></dd>
+  </dl>
+</div>
+<div id="div_group_18" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_18" class="passed">callbacks</dt>
+    <script type="text/javascript">moveProgressBar('10.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">normalizes name by stripping whitespace</span><span class='duration'>0.00567s</span></dd>
+    <script type="text/javascript">moveProgressBar('10.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">squeezes multiple spaces in name</span><span class='duration'>0.00488s</span></dd>
+  </dl>
+</div>
+<div id="div_group_19" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_19" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('10.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00336s</span></dd>
+    <script type="text/javascript">moveProgressBar('10.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates category with menu items</span><span class='duration'>0.02296s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates beverages category</span><span class='duration'>0.00456s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates desserts category</span><span class='duration'>0.00439s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates main courses category</span><span class='duration'>0.00449s</span></dd>
+  </dl>
+</div>
+<div id="div_group_20" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_20" class="passed">dependent destroy</dt>
+    <script type="text/javascript">moveProgressBar('11.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">destroys associated menu items when category is destroyed</span><span class='duration'>0.02835s</span></dd>
+  </dl>
+</div>
+<div id="div_group_21" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_21" class="passed">Delivery</dt>
+  </dl>
+</div>
+<div id="div_group_22" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_22" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('12.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to order required: true</span><span class='duration'>0.01307s</span></dd>
+  </dl>
+</div>
+<div id="div_group_23" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_23" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_24" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_24" class="passed">address validations for courier delivery</dt>
+    <script type="text/javascript">moveProgressBar('12.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :address cannot be empty/falsy</span><span class='duration'>0.01372s</span></dd>
+    <script type="text/javascript">moveProgressBar('12.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :address is between 2 and 50</span><span class='duration'>0.00789s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require address for pickup</span><span class='duration'>0.00509s</span></dd>
+  </dl>
+</div>
+<div id="div_group_25" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_25" class="passed">city validations for courier delivery</dt>
+    <script type="text/javascript">moveProgressBar('13.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :city cannot be empty/falsy</span><span class='duration'>0.00796s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :city is between 2 and 100</span><span class='duration'>0.00599s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :city to be ‹&quot;New York&quot;›</span><span class='duration'>0.00485s</span></dd>
+    <script type="text/javascript">moveProgressBar('14.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :city to be ‹&quot;O&#39;Connor&quot;›</span><span class='duration'>0.00469s</span></dd>
+    <script type="text/javascript">moveProgressBar('14.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :city to be ‹&quot;Saint-Denis&quot;›</span><span class='duration'>0.00484s</span></dd>
+    <script type="text/javascript">moveProgressBar('14.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :city to be ‹&quot;City123&quot;›</span><span class='duration'>0.00487s</span></dd>
+    <script type="text/javascript">moveProgressBar('14.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :city to be ‹&quot;City@Name&quot;›</span><span class='duration'>0.00513s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require city for pickup</span><span class='duration'>0.00469s</span></dd>
+  </dl>
+</div>
+<div id="div_group_26" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_26" class="passed">phone validations</dt>
+    <script type="text/javascript">moveProgressBar('15.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :phone cannot be empty/falsy</span><span class='duration'>0.00842s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;+1234567890&quot;›</span><span class='duration'>0.00489s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;(123) 456-7890&quot;›</span><span class='duration'>0.00440s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;123-456-7890&quot;›</span><span class='duration'>0.00542s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :phone to be ‹&quot;123&quot;›</span><span class='duration'>0.01042s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :phone to be ‹&quot;abc&quot;›</span><span class='duration'>0.01152s</span></dd>
+  </dl>
+</div>
+<div id="div_group_27" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_27" class="passed">delivery_method validations</dt>
+    <script type="text/javascript">moveProgressBar('17.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_method to be ‹&quot;by courier&quot;›</span><span class='duration'>0.01080s</span></dd>
+    <script type="text/javascript">moveProgressBar('17.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_method to be ‹&quot;pickup&quot;›</span><span class='duration'>0.01040s</span></dd>
+    <script type="text/javascript">moveProgressBar('17.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_method to be ‹&quot;&quot;›</span><span class='duration'>0.01043s</span></dd>
+    <script type="text/javascript">moveProgressBar('17.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :delivery_method to be ‹&quot;drone&quot;›</span><span class='duration'>0.01213s</span></dd>
+  </dl>
+</div>
+<div id="div_group_28" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_28" class="passed">payment_method validations</dt>
+    <script type="text/javascript">moveProgressBar('18.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :payment_method to be ‹&quot;cash&quot;›</span><span class='duration'>0.01144s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :payment_method to be ‹&quot;card&quot;›</span><span class='duration'>0.00722s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :payment_method to be ‹&quot;online&quot;›</span><span class='duration'>0.00732s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :payment_method to be ‹&quot;&quot;›</span><span class='duration'>0.00568s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :payment_method to be ‹&quot;bitcoin&quot;›</span><span class='duration'>0.00758s</span></dd>
+  </dl>
+</div>
+<div id="div_group_29" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_29" class="passed">delivery_status validations</dt>
+    <script type="text/javascript">moveProgressBar('19.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :delivery_status cannot be empty/falsy</span><span class='duration'>0.01292s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_status to be ‹&quot;pending&quot;›</span><span class='duration'>0.01018s</span></dd>
+    <script type="text/javascript">moveProgressBar('20.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_status to be ‹&quot;in_transit&quot;›</span><span class='duration'>0.01320s</span></dd>
+    <script type="text/javascript">moveProgressBar('20.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_status to be ‹&quot;delivered&quot;›</span><span class='duration'>0.00865s</span></dd>
+    <script type="text/javascript">moveProgressBar('20.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not allow invalid delivery_status values</span><span class='duration'>0.00529s</span></dd>
+  </dl>
+</div>
+<div id="div_group_30" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_30" class="passed">delivery_notes validations</dt>
+    <script type="text/javascript">moveProgressBar('20.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :delivery_notes is at most 50</span><span class='duration'>0.00620s</span></dd>
+    <script type="text/javascript">moveProgressBar('21.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_notes to be ‹&quot;&quot;›</span><span class='duration'>0.00607s</span></dd>
+    <script type="text/javascript">moveProgressBar('21.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :delivery_notes to be ‹nil›</span><span class='duration'>0.00501s</span></dd>
+  </dl>
+</div>
+<div id="div_group_31" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_31" class="passed">order validation</dt>
+    <script type="text/javascript">moveProgressBar('21.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :order cannot be empty/falsy</span><span class='duration'>0.00825s</span></dd>
+  </dl>
+</div>
+<div id="div_group_32" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_32" class="passed">custom validations</dt>
+  </dl>
+</div>
+<div id="div_group_33" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_33" class="passed">delivery_time_is_future</dt>
+    <script type="text/javascript">moveProgressBar('22.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates delivery_time is in the future on create</span><span class='duration'>0.00522s</span></dd>
+    <script type="text/javascript">moveProgressBar('22.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows future delivery_time</span><span class='duration'>0.00479s</span></dd>
+    <script type="text/javascript">moveProgressBar('22.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows nil delivery_time</span><span class='duration'>0.00427s</span></dd>
+  </dl>
+</div>
+<div id="div_group_34" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_34" class="passed">pickup_time_is_future</dt>
+    <script type="text/javascript">moveProgressBar('22.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates pickup_time is in the future on create</span><span class='duration'>0.00453s</span></dd>
+    <script type="text/javascript">moveProgressBar('23.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows future pickup_time</span><span class='duration'>0.00435s</span></dd>
+    <script type="text/javascript">moveProgressBar('23.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows nil pickup_time</span><span class='duration'>0.00477s</span></dd>
+  </dl>
+</div>
+<div id="div_group_35" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_35" class="passed">delivered_at_when_delivered</dt>
+    <script type="text/javascript">moveProgressBar('23.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">requires delivered_at when status is delivered</span><span class='duration'>0.00503s</span></dd>
+    <script type="text/javascript">moveProgressBar('23.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows delivered_at when status is delivered</span><span class='duration'>0.00476s</span></dd>
+    <script type="text/javascript">moveProgressBar('24.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows nil delivered_at for non-delivered status</span><span class='duration'>0.00469s</span></dd>
+  </dl>
+</div>
+<div id="div_group_36" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_36" class="passed">enums</dt>
+    <script type="text/javascript">moveProgressBar('24.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">defines delivery_status enum</span><span class='duration'>0.00188s</span></dd>
+    <script type="text/javascript">moveProgressBar('24.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">has pending as default delivery_status</span><span class='duration'>0.00156s</span></dd>
+  </dl>
+</div>
+<div id="div_group_37" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_37" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00472s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates pickup delivery</span><span class='duration'>0.01584s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates courier delivery</span><span class='duration'>0.01266s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates delivery with cash payment</span><span class='duration'>0.01218s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates delivery with card payment</span><span class='duration'>0.01262s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates delivery with online payment</span><span class='duration'>0.01180s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates pending delivery</span><span class='duration'>0.01226s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates in_transit delivery</span><span class='duration'>0.01140s</span></dd>
+    <script type="text/javascript">moveProgressBar('27.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates delivered delivery</span><span class='duration'>0.01185s</span></dd>
+  </dl>
+</div>
+<div id="div_group_38" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_38" class="passed">dependent destroy</dt>
+    <script type="text/javascript">moveProgressBar('27.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is destroyed when order is destroyed</span><span class='duration'>0.01733s</span></dd>
+  </dl>
+</div>
+<div id="div_group_39" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_39" class="passed">MenuItem</dt>
+  </dl>
+</div>
+<div id="div_group_40" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_40" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('27.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to category required: true</span><span class='duration'>0.00393s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many order_items</span><span class='duration'>0.00165s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many cart_items dependent =&gt; destroy</span><span class='duration'>0.00160s</span></dd>
+  </dl>
+</div>
+<div id="div_group_41" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_41" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_42" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_42" class="passed">name validations</dt>
+    <script type="text/javascript">moveProgressBar('28.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :name cannot be empty/falsy</span><span class='duration'>0.00900s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :name is between 2 and 200</span><span class='duration'>0.00960s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates uniqueness of name scoped to category</span><span class='duration'>0.00993s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows same name in different categories</span><span class='duration'>0.01139s</span></dd>
+  </dl>
+</div>
+<div id="div_group_43" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_43" class="passed">price validations</dt>
+    <script type="text/javascript">moveProgressBar('29.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :price cannot be empty/falsy</span><span class='duration'>0.00805s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :price to be ‹5.99›</span><span class='duration'>0.00547s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :price to be ‹100.0›</span><span class='duration'>0.00614s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹0›</span><span class='duration'>0.00528s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹-10›</span><span class='duration'>0.00597s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹10001›</span><span class='duration'>0.00559s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates numericality is greater than 0</span><span class='duration'>0.00450s</span></dd>
+  </dl>
+</div>
+<div id="div_group_44" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_44" class="passed">size validations</dt>
+    <script type="text/javascript">moveProgressBar('31.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :size cannot be empty/falsy</span><span class='duration'>0.00946s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :size to be ‹&quot;250&quot;›</span><span class='duration'>0.00619s</span></dd>
+    <script type="text/javascript">moveProgressBar('32.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :size to be ‹&quot;500&quot;›</span><span class='duration'>0.00603s</span></dd>
+    <script type="text/javascript">moveProgressBar('32.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :size to be ‹&quot;0&quot;›</span><span class='duration'>0.00581s</span></dd>
+    <script type="text/javascript">moveProgressBar('32.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :size to be ‹&quot;-100&quot;›</span><span class='duration'>0.00574s</span></dd>
+    <script type="text/javascript">moveProgressBar('32.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates size is a positive integer</span><span class='duration'>0.00404s</span></dd>
+  </dl>
+</div>
+<div id="div_group_45" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_45" class="passed">description validations</dt>
+    <script type="text/javascript">moveProgressBar('33.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :description is at most 1000</span><span class='duration'>0.00698s</span></dd>
+    <script type="text/javascript">moveProgressBar('33.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :description to be ‹&quot;&quot;›</span><span class='duration'>0.00612s</span></dd>
+    <script type="text/javascript">moveProgressBar('33.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :description to be ‹nil›</span><span class='duration'>0.00590s</span></dd>
+  </dl>
+</div>
+<div id="div_group_46" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_46" class="passed">image_url validations</dt>
+    <script type="text/javascript">moveProgressBar('34.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :image_url to be ‹&quot;&quot;›</span><span class='duration'>0.00591s</span></dd>
+    <script type="text/javascript">moveProgressBar('34.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :image_url to be ‹nil›</span><span class='duration'>0.00589s</span></dd>
+    <script type="text/javascript">moveProgressBar('34.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :image_url to be ‹&quot;http://example.com/image.jpg&quot;›</span><span class='duration'>0.00566s</span></dd>
+    <script type="text/javascript">moveProgressBar('34.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :image_url to be ‹&quot;https://example.com/image.png&quot;›</span><span class='duration'>0.00606s</span></dd>
+    <script type="text/javascript">moveProgressBar('35.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :image_url to be ‹&quot;not_a_url&quot;›</span><span class='duration'>0.00587s</span></dd>
+    <script type="text/javascript">moveProgressBar('35.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :image_url to be ‹&quot;ftp://example.com/image.jpg&quot;›</span><span class='duration'>0.00628s</span></dd>
+  </dl>
+</div>
+<div id="div_group_47" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_47" class="passed">available validations</dt>
+    <script type="text/javascript">moveProgressBar('35.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :available to be ‹true›</span><span class='duration'>0.00599s</span></dd>
+    <script type="text/javascript">moveProgressBar('35.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :available to be ‹false›</span><span class='duration'>0.00602s</span></dd>
+  </dl>
+</div>
+<div id="div_group_48" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_48" class="passed">available_quantity validations</dt>
+    <script type="text/javascript">moveProgressBar('36.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :available_quantity to be ‹0›</span><span class='duration'>0.00599s</span></dd>
+    <script type="text/javascript">moveProgressBar('36.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :available_quantity to be ‹100›</span><span class='duration'>0.00568s</span></dd>
+    <script type="text/javascript">moveProgressBar('36.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :available_quantity to be ‹-1›</span><span class='duration'>0.00607s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates available_quantity is a non-negative integer</span><span class='duration'>0.00402s</span></dd>
+  </dl>
+</div>
+<div id="div_group_49" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_49" class="passed">category validation</dt>
+    <script type="text/javascript">moveProgressBar('37.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :category cannot be empty/falsy</span><span class='duration'>0.00791s</span></dd>
+  </dl>
+</div>
+<div id="div_group_50" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_50" class="passed">callbacks</dt>
+  </dl>
+</div>
+<div id="div_group_51" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_51" class="passed">mark_unavailable_if_depleted</dt>
+    <script type="text/javascript">moveProgressBar('37.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">marks item as unavailable when quantity becomes 0</span><span class='duration'>0.04105s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">keeps item available when quantity is greater than 0</span><span class='duration'>0.01125s</span></dd>
+    <script type="text/javascript">moveProgressBar('38.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not override manually set availability</span><span class='duration'>0.01093s</span></dd>
+  </dl>
+</div>
+<div id="div_group_52" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_52" class="passed">instance methods</dt>
+  </dl>
+</div>
+<div id="div_group_53" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_53" class="passed">#has_pending_orders?</dt>
+    <script type="text/javascript">moveProgressBar('38.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns true when item has pending orders</span><span class='duration'>0.02407s</span></dd>
+    <script type="text/javascript">moveProgressBar('38.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns false when item has no pending orders</span><span class='duration'>0.01919s</span></dd>
+    <script type="text/javascript">moveProgressBar('38.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns false when item has no orders</span><span class='duration'>0.00915s</span></dd>
+  </dl>
+</div>
+<div id="div_group_54" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_54" class="passed">#can_be_deleted?</dt>
+    <script type="text/javascript">moveProgressBar('39.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns false when item has pending orders</span><span class='duration'>0.01890s</span></dd>
+    <script type="text/javascript">moveProgressBar('39.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns true when item has no pending orders</span><span class='duration'>0.00962s</span></dd>
+  </dl>
+</div>
+<div id="div_group_55" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_55" class="passed">#deletion_blocked_reason</dt>
+    <script type="text/javascript">moveProgressBar('39.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns reason when item has pending orders</span><span class='duration'>0.01991s</span></dd>
+    <script type="text/javascript">moveProgressBar('40.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns nil when item can be deleted</span><span class='duration'>0.00953s</span></dd>
+  </dl>
+</div>
+<div id="div_group_56" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_56" class="passed">deletion prevention</dt>
+    <script type="text/javascript">moveProgressBar('40.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">prevents deletion when item has pending orders</span><span class='duration'>0.02224s</span></dd>
+    <script type="text/javascript">moveProgressBar('40.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows deletion when no pending orders exist</span><span class='duration'>0.01335s</span></dd>
+  </dl>
+</div>
+<div id="div_group_57" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_57" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('40.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00351s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates unavailable menu item</span><span class='duration'>0.00819s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates low stock menu item</span><span class='duration'>0.00808s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates expensive menu item</span><span class='duration'>0.00838s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates cheap menu item</span><span class='duration'>0.00842s</span></dd>
+  </dl>
+</div>
+<div id="div_group_58" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_58" class="passed">OrderItem</dt>
+  </dl>
+</div>
+<div id="div_group_59" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_59" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('42.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to order required: true</span><span class='duration'>0.00290s</span></dd>
+    <script type="text/javascript">moveProgressBar('42.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">belongs to menu_item optionally</span><span class='duration'>0.01158s</span></dd>
+    <script type="text/javascript">moveProgressBar('42.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">can have a menu_item</span><span class='duration'>0.00447s</span></dd>
+  </dl>
+</div>
+<div id="div_group_60" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_60" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_61" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_61" class="passed">total_quantity validations</dt>
+    <script type="text/javascript">moveProgressBar('43.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :total_quantity cannot be empty/falsy</span><span class='duration'>0.00638s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_quantity to be ‹1›</span><span class='duration'>0.00467s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_quantity to be ‹50›</span><span class='duration'>0.00470s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_quantity to be ‹100›</span><span class='duration'>0.00451s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_quantity to be ‹0›</span><span class='duration'>0.00466s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_quantity to be ‹-1›</span><span class='duration'>0.00458s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_quantity to be ‹101›</span><span class='duration'>0.00534s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates total_quantity is an integer between 1 and 100</span><span class='duration'>0.00521s</span></dd>
+  </dl>
+</div>
+<div id="div_group_62" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_62" class="passed">price validations</dt>
+    <script type="text/javascript">moveProgressBar('45.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :price cannot be empty/falsy</span><span class='duration'>0.00658s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :price to be ‹5.99›</span><span class='duration'>0.00518s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :price to be ‹100.0›</span><span class='duration'>0.00439s</span></dd>
+    <script type="text/javascript">moveProgressBar('46.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹0›</span><span class='duration'>0.00444s</span></dd>
+    <script type="text/javascript">moveProgressBar('46.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹-10›</span><span class='duration'>0.00538s</span></dd>
+    <script type="text/javascript">moveProgressBar('46.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :price to be ‹10001›</span><span class='duration'>0.00461s</span></dd>
+    <script type="text/javascript">moveProgressBar('46.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates price is greater than 0</span><span class='duration'>0.00426s</span></dd>
+  </dl>
+</div>
+<div id="div_group_63" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_63" class="passed">subtotal validations</dt>
+    <script type="text/javascript">moveProgressBar('47.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :subtotal to be ‹nil›</span><span class='duration'>0.00495s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :subtotal to be ‹0›</span><span class='duration'>0.00464s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :subtotal to be ‹-10›</span><span class='duration'>0.00444s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows valid subtotal that matches calculation</span><span class='duration'>0.01407s</span></dd>
+  </dl>
+</div>
+<div id="div_group_64" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_64" class="passed">order validation</dt>
+    <script type="text/javascript">moveProgressBar('48.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :order cannot be empty/falsy</span><span class='duration'>0.00652s</span></dd>
+  </dl>
+</div>
+<div id="div_group_65" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_65" class="passed">menu_item validation</dt>
+    <script type="text/javascript">moveProgressBar('48.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates presence on create</span><span class='duration'>0.00442s</span></dd>
+    <script type="text/javascript">moveProgressBar('48.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows nil menu_item on existing records</span><span class='duration'>0.01655s</span></dd>
+  </dl>
+</div>
+<div id="div_group_66" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_66" class="passed">callbacks</dt>
+  </dl>
+</div>
+<div id="div_group_67" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_67" class="passed">calculate_subtotal</dt>
+    <script type="text/javascript">moveProgressBar('49.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">calculates subtotal before save</span><span class='duration'>0.01398s</span></dd>
+  </dl>
+</div>
+<div id="div_group_68" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_68" class="passed">custom validations</dt>
+  </dl>
+</div>
+<div id="div_group_69" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_69" class="passed">subtotal_matches_calculation</dt>
+    <script type="text/javascript">moveProgressBar('49.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates subtotal matches price × quantity</span><span class='duration'>0.01707s</span></dd>
+    <script type="text/javascript">moveProgressBar('49.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows correct subtotal calculation</span><span class='duration'>0.00436s</span></dd>
+    <script type="text/javascript">moveProgressBar('49.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows subtotal to be nil</span><span class='duration'>0.00442s</span></dd>
+  </dl>
+</div>
+<div id="div_group_70" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_70" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('50.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00412s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates order item with large quantity</span><span class='duration'>0.01650s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates order item with single item</span><span class='duration'>0.01722s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">automatically calculates subtotal</span><span class='duration'>0.01670s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">uses menu item price if not specified</span><span class='duration'>0.01726s</span></dd>
+  </dl>
+</div>
+<div id="div_group_71" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_71" class="passed">Order</dt>
+  </dl>
+</div>
+<div id="div_group_72" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_72" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('51.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to user required: true</span><span class='duration'>0.00253s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many order_items dependent =&gt; destroy</span><span class='duration'>0.00141s</span></dd>
+    <script type="text/javascript">moveProgressBar('52.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have one delivery dependent =&gt; destroy</span><span class='duration'>0.00143s</span></dd>
+  </dl>
+</div>
+<div id="div_group_73" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_73" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_74" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_74" class="passed">status validations</dt>
+    <script type="text/javascript">moveProgressBar('52.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :status cannot be empty/falsy</span><span class='duration'>0.00565s</span></dd>
+    <script type="text/javascript">moveProgressBar('52.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :status to be ‹&quot;pending&quot;›</span><span class='duration'>0.00352s</span></dd>
+    <script type="text/javascript">moveProgressBar('52.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :status to be ‹&quot;completed&quot;›</span><span class='duration'>0.00358s</span></dd>
+    <script type="text/javascript">moveProgressBar('53.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :status to be ‹&quot;delivered&quot;›</span><span class='duration'>0.00332s</span></dd>
+    <script type="text/javascript">moveProgressBar('53.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :status to be ‹&quot;cancelled&quot;›</span><span class='duration'>0.00325s</span></dd>
+    <script type="text/javascript">moveProgressBar('53.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not allow invalid status values</span><span class='duration'>0.00334s</span></dd>
+  </dl>
+</div>
+<div id="div_group_75" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_75" class="passed">total_amount validations</dt>
+    <script type="text/javascript">moveProgressBar('53.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :total_amount looks like a number greater than or equal to 0</span><span class='duration'>0.00625s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_amount to be ‹nil›</span><span class='duration'>0.01992s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_amount to be ‹0›</span><span class='duration'>0.00517s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :total_amount to be ‹100.5›</span><span class='duration'>0.00498s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_amount to be ‹-10›</span><span class='duration'>0.00501s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :total_amount to be ‹1000001›</span><span class='duration'>0.00437s</span></dd>
+  </dl>
+</div>
+<div id="div_group_76" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_76" class="passed">notes validations</dt>
+    <script type="text/javascript">moveProgressBar('55.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :notes is at most 1000</span><span class='duration'>0.00488s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :notes to be ‹&quot;&quot;›</span><span class='duration'>0.00396s</span></dd>
+    <script type="text/javascript">moveProgressBar('56.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :notes to be ‹nil›</span><span class='duration'>0.00438s</span></dd>
+  </dl>
+</div>
+<div id="div_group_77" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_77" class="passed">user validation</dt>
+    <script type="text/javascript">moveProgressBar('56.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :user cannot be empty/falsy</span><span class='duration'>0.00614s</span></dd>
+  </dl>
+</div>
+<div id="div_group_78" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_78" class="passed">custom validations</dt>
+  </dl>
+</div>
+<div id="div_group_79" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_79" class="passed">must_have_order_items</dt>
+    <script type="text/javascript">moveProgressBar('56.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates order has at least one order item on update</span><span class='duration'>0.02953s</span></dd>
+    <script type="text/javascript">moveProgressBar('56.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows update when order has items</span><span class='duration'>0.03180s</span></dd>
+  </dl>
+</div>
+<div id="div_group_80" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_80" class="passed">total_amount_matches_items</dt>
+    <script type="text/javascript">moveProgressBar('57.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates total amount matches sum of order items</span><span class='duration'>0.03089s</span></dd>
+    <script type="text/javascript">moveProgressBar('57.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows correct total amount</span><span class='duration'>0.02938s</span></dd>
+    <script type="text/javascript">moveProgressBar('57.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows nil total amount</span><span class='duration'>0.01995s</span></dd>
+  </dl>
+</div>
+<div id="div_group_81" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_81" class="passed">enums</dt>
+    <script type="text/javascript">moveProgressBar('58.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">defines status enum</span><span class='duration'>0.00198s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">has pending as default status</span><span class='duration'>0.00164s</span></dd>
+  </dl>
+</div>
+<div id="div_group_82" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_82" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('58.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00378s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates order with items</span><span class='duration'>0.03795s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates order with delivery</span><span class='duration'>0.01269s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates pending order</span><span class='duration'>0.00916s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates completed order</span><span class='duration'>0.00906s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates delivered order</span><span class='duration'>0.00928s</span></dd>
+    <script type="text/javascript">moveProgressBar('60.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates cancelled order</span><span class='duration'>0.00893s</span></dd>
+  </dl>
+</div>
+<div id="div_group_83" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_83" class="passed">dependent destroy</dt>
+    <script type="text/javascript">moveProgressBar('60.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">destroys associated order items when order is destroyed</span><span class='duration'>0.04297s</span></dd>
+    <script type="text/javascript">moveProgressBar('60.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">destroys associated delivery when order is destroyed</span><span class='duration'>0.01714s</span></dd>
+  </dl>
+</div>
+<div id="div_group_84" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_84" class="passed">User</dt>
+  </dl>
+</div>
+<div id="div_group_85" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_85" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('61.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many orders</span><span class='duration'>0.00225s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many cart_items dependent =&gt; destroy</span><span class='duration'>0.00211s</span></dd>
+  </dl>
+</div>
+<div id="div_group_86" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_86" class="passed">validations</dt>
+  </dl>
+</div>
+<div id="div_group_87" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_87" class="passed">email validations</dt>
+    <script type="text/javascript">moveProgressBar('61.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :email cannot be empty/falsy</span><span class='duration'>0.00778s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :email is at most 255</span><span class='duration'>0.00585s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :email to be ‹&quot;user@example.com&quot;›</span><span class='duration'>0.00428s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :email to be ‹&quot;test.user+tag@domain.co.uk&quot;›</span><span class='duration'>0.00434s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :email to be ‹&quot;invalid_email&quot;›</span><span class='duration'>0.00405s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :email to be ‹&quot;user@&quot;›</span><span class='duration'>0.00472s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :email to be ‹&quot;@example.com&quot;›</span><span class='duration'>0.00446s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates uniqueness of email (case insensitive)</span><span class='duration'>0.00925s</span></dd>
+  </dl>
+</div>
+<div id="div_group_88" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_88" class="passed">name validations</dt>
+    <script type="text/javascript">moveProgressBar('63.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :name cannot be empty/falsy</span><span class='duration'>0.00780s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :name is between 2 and 50</span><span class='duration'>0.00789s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;John Doe&quot;›</span><span class='duration'>0.00419s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :name to be ‹&quot;O&#39;Brien&quot;›</span><span class='duration'>0.00416s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :name to be ‹&quot;A&quot;›</span><span class='duration'>0.00450s</span></dd>
+  </dl>
+</div>
+<div id="div_group_89" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_89" class="passed">phone validations</dt>
+    <script type="text/javascript">moveProgressBar('65.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;+1234567890&quot;›</span><span class='duration'>0.00492s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;(123) 456-7890&quot;›</span><span class='duration'>0.00474s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹&quot;&quot;›</span><span class='duration'>0.00473s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :phone to be ‹nil›</span><span class='duration'>0.00459s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :phone to be ‹&quot;123&quot;›, producing a custom validation error on failure</span><span class='duration'>0.00455s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :phone to be ‹&quot;abc&quot;›, producing a custom validation error on failure</span><span class='duration'>0.00508s</span></dd>
+  </dl>
+</div>
+<div id="div_group_90" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_90" class="passed">role validations</dt>
+    <script type="text/javascript">moveProgressBar('66.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :role cannot be empty/falsy</span><span class='duration'>0.00742s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :role to be ‹&quot;customer&quot;›</span><span class='duration'>0.00424s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :role to be ‹&quot;admin&quot;›</span><span class='duration'>0.00430s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :role to be ‹&quot;staff&quot;›</span><span class='duration'>0.00398s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :role to be ‹&quot;invalid_role&quot;›</span><span class='duration'>0.00438s</span></dd>
+  </dl>
+</div>
+<div id="div_group_91" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_91" class="passed">password validations</dt>
+    <script type="text/javascript">moveProgressBar('68.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates password presence on create for non-OAuth users</span><span class='duration'>0.00332s</span></dd>
+    <script type="text/javascript">moveProgressBar('68.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">validates password length minimum of 8 characters</span><span class='duration'>0.00452s</span></dd>
+    <script type="text/javascript">moveProgressBar('68.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">accepts valid password with complexity</span><span class='duration'>0.00411s</span></dd>
+    <script type="text/javascript">moveProgressBar('68.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require password for OAuth users</span><span class='duration'>0.00308s</span></dd>
+  </dl>
+</div>
+<div id="div_group_92" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_92" class="passed">callbacks</dt>
+    <script type="text/javascript">moveProgressBar('69.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">normalizes email to lowercase before validation</span><span class='duration'>0.00570s</span></dd>
+    <script type="text/javascript">moveProgressBar('69.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">strips whitespace from email</span><span class='duration'>0.00572s</span></dd>
+  </dl>
+</div>
+<div id="div_group_93" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_93" class="passed">factory</dt>
+    <script type="text/javascript">moveProgressBar('69.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a valid factory</span><span class='duration'>0.00476s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates admin user with admin trait</span><span class='duration'>0.00683s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates staff user with staff trait</span><span class='duration'>0.00603s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates user with orders</span><span class='duration'>0.01354s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates user with cart items</span><span class='duration'>0.02998s</span></dd>
+    <script type="text/javascript">moveProgressBar('71.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates OAuth user</span><span class='duration'>0.00766s</span></dd>
+  </dl>
+</div>
+<div id="div_group_94" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_94" class="passed">.from_google_oauth</dt>
+  </dl>
+</div>
+<div id="div_group_95" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_95" class="passed">when user does not exist</dt>
+    <script type="text/javascript">moveProgressBar('71.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates a new user with Google OAuth data</span><span class='duration'>0.00823s</span></dd>
+  </dl>
+</div>
+<div id="div_group_96" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_96" class="passed">when user exists with same email</dt>
+    <script type="text/javascript">moveProgressBar('71.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">links the existing account to Google OAuth</span><span class='duration'>0.01189s</span></dd>
+  </dl>
+</div>
+<div id="div_group_97" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_97" class="passed">when OAuth user already exists</dt>
+    <script type="text/javascript">moveProgressBar('71.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns the existing OAuth user</span><span class='duration'>0.00952s</span></dd>
+  </dl>
+</div>
+<div id="div_group_98" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_98" class="passed">password authentication</dt>
+    <script type="text/javascript">moveProgressBar('72.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">authenticates with correct password</span><span class='duration'>0.00794s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not authenticate with incorrect password</span><span class='duration'>0.00851s</span></dd>
+  </dl>
+</div>
+<div id="div_group_99" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_99" class="passed">Api::V1::CartItems</dt>
+  </dl>
+</div>
+<div id="div_group_100" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_100" class="passed">GET /api/v1/cart</dt>
+  </dl>
+</div>
+<div id="div_group_101" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_101" class="passed">with authentication</dt>
+    <script type="text/javascript">moveProgressBar('72.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns user cart items</span><span class='duration'>0.11792s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns total items count</span><span class='duration'>0.04160s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns total price</span><span class='duration'>0.04053s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">includes menu item details</span><span class='duration'>0.04165s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns empty cart for user with no items</span><span class='duration'>0.04239s</span></dd>
+  </dl>
+</div>
+<div id="div_group_102" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_102" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('74.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00365s</span></dd>
+  </dl>
+</div>
+<div id="div_group_103" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_103" class="passed">POST /api/v1/cart</dt>
+  </dl>
+</div>
+<div id="div_group_104" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_104" class="passed">adding new item to cart</dt>
+    <script type="text/javascript">moveProgressBar('74.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates a new cart item</span><span class='duration'>0.03409s</span></dd>
+    <script type="text/javascript">moveProgressBar('74.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns created cart item</span><span class='duration'>0.02235s</span></dd>
+    <script type="text/javascript">moveProgressBar('74.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">defaults to quantity 1 if not specified</span><span class='duration'>0.02024s</span></dd>
+  </dl>
+</div>
+<div id="div_group_105" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_105" class="passed">updating existing cart item</dt>
+    <script type="text/javascript">moveProgressBar('75.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">increases quantity instead of creating new item</span><span class='duration'>0.03240s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates the quantity correctly</span><span class='duration'>0.02594s</span></dd>
+  </dl>
+</div>
+<div id="div_group_106" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_106" class="passed">validation errors</dt>
+    <script type="text/javascript">moveProgressBar('75.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error when menu item not found</span><span class='duration'>0.00984s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error when quantity exceeds stock</span><span class='duration'>0.01977s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error when item is unavailable</span><span class='duration'>0.02012s</span></dd>
+  </dl>
+</div>
+<div id="div_group_107" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_107" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('76.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00964s</span></dd>
+  </dl>
+</div>
+<div id="div_group_108" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_108" class="passed">PATCH /api/v1/cart/:id</dt>
+  </dl>
+</div>
+<div id="div_group_109" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_109" class="passed">with valid parameters</dt>
+    <script type="text/javascript">moveProgressBar('76.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates cart item quantity</span><span class='duration'>0.02415s</span></dd>
+  </dl>
+</div>
+<div id="div_group_110" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_110" class="passed">with invalid parameters</dt>
+    <script type="text/javascript">moveProgressBar('77.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for invalid quantity</span><span class='duration'>0.02163s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error when quantity exceeds stock</span><span class='duration'>0.02325s</span></dd>
+  </dl>
+</div>
+<div id="div_group_111" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_111" class="passed">cart item not found</dt>
+    <script type="text/javascript">moveProgressBar('77.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found error</span><span class='duration'>0.01029s</span></dd>
+  </dl>
+</div>
+<div id="div_group_112" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_112" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('77.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.01727s</span></dd>
+  </dl>
+</div>
+<div id="div_group_113" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_113" class="passed">DELETE /api/v1/cart/:id</dt>
+  </dl>
+</div>
+<div id="div_group_114" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_114" class="passed">with authentication</dt>
+    <script type="text/javascript">moveProgressBar('78.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">deletes cart item</span><span class='duration'>0.02188s</span></dd>
+    <script type="text/javascript">moveProgressBar('78.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns success message</span><span class='duration'>0.02921s</span></dd>
+    <script type="text/javascript">moveProgressBar('78.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found for non-existent cart item</span><span class='duration'>0.01978s</span></dd>
+  </dl>
+</div>
+<div id="div_group_115" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_115" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('79.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.01823s</span></dd>
+  </dl>
+</div>
+<div id="div_group_116" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_116" class="passed">DELETE /api/v1/cart/clear</dt>
+  </dl>
+</div>
+<div id="div_group_117" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_117" class="passed">with authentication</dt>
+    <script type="text/javascript">moveProgressBar('79.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">clears all cart items for user</span><span class='duration'>0.05761s</span></dd>
+    <script type="text/javascript">moveProgressBar('79.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns success message</span><span class='duration'>0.05365s</span></dd>
+  </dl>
+</div>
+<div id="div_group_118" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_118" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('79.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.05037s</span></dd>
+  </dl>
+</div>
+<div id="div_group_119" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_119" class="passed">Api::V1::Categories</dt>
+  </dl>
+</div>
+<div id="div_group_120" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_120" class="passed">GET /api/v1/categories</dt>
+    <script type="text/javascript">moveProgressBar('80.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns all categories</span><span class='duration'>0.32692s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">includes menu items count</span><span class='duration'>0.33176s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns category attributes</span><span class='duration'>0.28057s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require authentication</span><span class='duration'>0.29195s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns empty array when no categories exist</span><span class='duration'>0.32236s</span></dd>
+  </dl>
+</div>
+<div id="div_group_121" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_121" class="passed">GET /api/v1/categories/:id</dt>
+    <script type="text/javascript">moveProgressBar('81.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns category with menu items</span><span class='duration'>0.01850s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">includes detailed menu item information</span><span class='duration'>0.01914s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found for invalid id</span><span class='duration'>0.00424s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require authentication</span><span class='duration'>0.01873s</span></dd>
+  </dl>
+</div>
+<div id="div_group_122" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_122" class="passed">POST /api/v1/categories</dt>
+  </dl>
+</div>
+<div id="div_group_123" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_123" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('82.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates a new category</span><span class='duration'>0.01547s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns created category</span><span class='duration'>0.01326s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">normalizes category name</span><span class='duration'>0.01325s</span></dd>
+  </dl>
+</div>
+<div id="div_group_124" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_124" class="passed">with invalid parameters</dt>
+    <script type="text/javascript">moveProgressBar('83.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for missing name</span><span class='duration'>0.01229s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for duplicate name</span><span class='duration'>0.02087s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for too short name</span><span class='duration'>0.01235s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for invalid characters in name</span><span class='duration'>0.01346s</span></dd>
+  </dl>
+</div>
+<div id="div_group_125" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_125" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('84.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00336s</span></dd>
+  </dl>
+</div>
+<div id="div_group_126" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_126" class="passed">PATCH /api/v1/categories/:id</dt>
+  </dl>
+</div>
+<div id="div_group_127" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_127" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('84.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates category</span><span class='duration'>0.01869s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows partial updates</span><span class='duration'>0.01874s</span></dd>
+  </dl>
+</div>
+<div id="div_group_128" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_128" class="passed">with invalid parameters</dt>
+    <script type="text/javascript">moveProgressBar('85.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for duplicate name</span><span class='duration'>0.01836s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for empty name</span><span class='duration'>0.01546s</span></dd>
+  </dl>
+</div>
+<div id="div_group_129" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_129" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('85.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00634s</span></dd>
+  </dl>
+</div>
+<div id="div_group_130" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_130" class="passed">DELETE /api/v1/categories/:id</dt>
+  </dl>
+</div>
+<div id="div_group_131" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_131" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('86.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">deletes category</span><span class='duration'>0.01793s</span></dd>
+    <script type="text/javascript">moveProgressBar('86.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns success message</span><span class='duration'>0.01598s</span></dd>
+    <script type="text/javascript">moveProgressBar('86.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">deletes associated menu items</span><span class='duration'>0.04684s</span></dd>
+  </dl>
+</div>
+<div id="div_group_132" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_132" class="passed">category not found</dt>
+    <script type="text/javascript">moveProgressBar('86.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found error</span><span class='duration'>0.01279s</span></dd>
+  </dl>
+</div>
+<div id="div_group_133" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_133" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('87.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00679s</span></dd>
+  </dl>
+</div>
+<div id="div_group_134" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_134" class="passed">Api::V1::MenuItems</dt>
+  </dl>
+</div>
+<div id="div_group_135" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_135" class="passed">GET /api/v1/menu_items</dt>
+    <script type="text/javascript">moveProgressBar('87.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns all menu items</span><span class='duration'>0.04735s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">includes category information</span><span class='duration'>0.04135s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">filters by category_id</span><span class='duration'>0.04803s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">filters by availability</span><span class='duration'>0.03996s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require authentication</span><span class='duration'>0.04095s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns menu item attributes</span><span class='duration'>0.04185s</span></dd>
+  </dl>
+</div>
+<div id="div_group_136" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_136" class="passed">GET /api/v1/menu_items/:id</dt>
+    <script type="text/javascript">moveProgressBar('89.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns detailed menu item information</span><span class='duration'>0.01184s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">includes category details</span><span class='duration'>0.01084s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found for invalid id</span><span class='duration'>0.00402s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">does not require authentication</span><span class='duration'>0.01448s</span></dd>
+  </dl>
+</div>
+<div id="div_group_137" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_137" class="passed">POST /api/v1/menu_items</dt>
+  </dl>
+</div>
+<div id="div_group_138" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_138" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('90.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">creates a new menu item</span><span class='duration'>0.01899s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns created menu item</span><span class='duration'>0.01614s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">associates menu item with category</span><span class='duration'>0.01757s</span></dd>
+  </dl>
+</div>
+<div id="div_group_139" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_139" class="passed">with invalid parameters</dt>
+    <script type="text/javascript">moveProgressBar('91.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for missing name</span><span class='duration'>0.01875s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for invalid price</span><span class='duration'>0.01673s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for missing category</span><span class='duration'>0.01609s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for duplicate name in same category</span><span class='duration'>0.01866s</span></dd>
+    <script type="text/javascript">moveProgressBar('92.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for invalid image URL</span><span class='duration'>0.01590s</span></dd>
+    <script type="text/javascript">moveProgressBar('92.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for negative available_quantity</span><span class='duration'>0.01693s</span></dd>
+  </dl>
+</div>
+<div id="div_group_140" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_140" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('92.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00740s</span></dd>
+  </dl>
+</div>
+<div id="div_group_141" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_141" class="passed">with non-admin user</dt>
+    <script type="text/javascript">moveProgressBar('92.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns forbidden error</span><span class='duration'>0.01154s</span></dd>
+  </dl>
+</div>
+<div id="div_group_142" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_142" class="passed">PATCH /api/v1/menu_items/:id</dt>
+  </dl>
+</div>
+<div id="div_group_143" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_143" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('93.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates menu item</span><span class='duration'>0.02159s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows partial updates</span><span class='duration'>0.02026s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates available_quantity</span><span class='duration'>0.02190s</span></dd>
+    <script type="text/javascript">moveProgressBar('94.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">automatically marks unavailable when quantity is 0</span><span class='duration'>0.02048s</span></dd>
+  </dl>
+</div>
+<div id="div_group_144" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_144" class="passed">with invalid parameters</dt>
+    <script type="text/javascript">moveProgressBar('94.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for invalid price</span><span class='duration'>0.01942s</span></dd>
+    <script type="text/javascript">moveProgressBar('94.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns error for empty name</span><span class='duration'>0.02111s</span></dd>
+  </dl>
+</div>
+<div id="div_group_145" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_145" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('94.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.01011s</span></dd>
+  </dl>
+</div>
+<div id="div_group_146" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_146" class="passed">with non-admin user</dt>
+    <script type="text/javascript">moveProgressBar('95.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns forbidden error</span><span class='duration'>0.01678s</span></dd>
+  </dl>
+</div>
+<div id="div_group_147" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_147" class="passed">DELETE /api/v1/menu_items/:id</dt>
+  </dl>
+</div>
+<div id="div_group_148" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_148" class="passed">with admin authentication</dt>
+    <script type="text/javascript">moveProgressBar('95.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">deletes menu item when no pending orders</span><span class='duration'>0.02180s</span></dd>
+    <script type="text/javascript">moveProgressBar('95.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns success message</span><span class='duration'>0.01992s</span></dd>
+    <script type="text/javascript">moveProgressBar('95.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">prevents deletion when item has pending orders</span><span class='duration'>0.03113s</span></dd>
+    <script type="text/javascript">moveProgressBar('96.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows deletion when orders are completed</span><span class='duration'>0.02970s</span></dd>
+  </dl>
+</div>
+<div id="div_group_149" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_149" class="passed">menu item not found</dt>
+    <script type="text/javascript">moveProgressBar('96.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns not found error</span><span class='duration'>0.01698s</span></dd>
+  </dl>
+</div>
+<div id="div_group_150" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_150" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('96.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.01011s</span></dd>
+  </dl>
+</div>
+<div id="div_group_151" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_151" class="passed">with non-admin user</dt>
+    <script type="text/javascript">moveProgressBar('97.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns forbidden error</span><span class='duration'>0.01823s</span></dd>
+  </dl>
+</div>
+<div id="div_group_152" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_152" class="passed">Api::V1::Orders</dt>
+  </dl>
+</div>
+<div id="div_group_153" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_153" class="passed">GET /api/v1/orders</dt>
+  </dl>
+</div>
+<div id="div_group_154" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_154" class="passed">with authentication</dt>
+    <script type="text/javascript">moveProgressBar('97.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns only current user orders</span><span class='duration'>0.11513s</span></dd>
+    <script type="text/javascript">moveProgressBar('97.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">orders by created_at desc</span><span class='duration'>0.10816s</span></dd>
+    <script type="text/javascript">moveProgressBar('97.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">filters orders by status</span><span class='duration'>0.11534s</span></dd>
+  </dl>
+</div>
+<div id="div_group_155" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_155" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('98.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.00357s</span></dd>
+  </dl>
+</div>
+<div id="div_group_156" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_156" class="passed">GET /api/v1/orders/:id</dt>
+  </dl>
+</div>
+<div id="div_group_157" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_157" class="passed">with authentication</dt>
+    <script type="text/javascript">moveProgressBar('98.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns detailed order information</span><span class='duration'>0.04039s</span></dd>
+  </dl>
+</div>
+<div id="div_group_158" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_158" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('98.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.03282s</span></dd>
+  </dl>
+</div>
+<div id="div_group_159" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_159" class="passed">POST /api/v1/orders</dt>
+  </dl>
+</div>
+<div id="div_group_160" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_160" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('98.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.01475s</span></dd>
+  </dl>
+</div>
+<div id="div_group_161" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_161" class="passed">PATCH /api/v1/orders/:id</dt>
+  </dl>
+</div>
+<div id="div_group_162" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_162" class="passed">updating order status</dt>
+    <script type="text/javascript">moveProgressBar('99.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows updating status to completed</span><span class='duration'>0.04295s</span></dd>
+    <script type="text/javascript">moveProgressBar('99.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">allows updating status to cancelled</span><span class='duration'>0.04282s</span></dd>
+  </dl>
+</div>
+<div id="div_group_163" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_163" class="passed">without authentication</dt>
+    <script type="text/javascript">moveProgressBar('99.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns unauthorized error</span><span class='duration'>0.03757s</span></dd>
+  </dl>
+</div>
+<div id="div_group_164" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_164" class="passed">Protected Access</dt>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">rejects unauthorized access to users list</span><span class='duration'>0.00548s</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>7.15927 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "367 examples, 0 failures";</script>
 </div>
 </div>
 </body>
