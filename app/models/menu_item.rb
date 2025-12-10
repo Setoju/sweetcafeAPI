@@ -9,6 +9,7 @@ class MenuItem < ApplicationRecord
   validates :name, presence: true,
                    length: { minimum: 2, maximum: 200 },
                    uniqueness: { scope: :category_id, case_sensitive: false, message: "already exists in this category" }
+  validates :discount, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" }
   validates :price, presence: true,
                     numericality: { greater_than: 0, less_than_or_equal_to: 10000, message: "must be between 0 and 10,000" }
   validates :size, presence: true, numericality: { only_integer: true, greater_than: 0, message: "must be positive" }

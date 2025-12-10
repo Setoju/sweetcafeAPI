@@ -77,7 +77,7 @@ module Api
       end
 
       def menu_item_params
-        params.require(:menu_item).permit(:name, :description, :size, :price, :category_id, :available, :image_url, :available_quantity)
+        params.require(:menu_item).permit(:name, :description, :size, :price, :category_id, :available, :image_url, :available_quantity, :discount)
       end
 
       def menu_item_response(menu_item, detailed: false)
@@ -86,6 +86,7 @@ module Api
           name: menu_item.name,
           size: menu_item.size,
           description: menu_item.description,
+          discount: menu_item.discount,
           price: menu_item.price.to_f,
           available: menu_item.available,
           available_quantity: menu_item.available_quantity,
