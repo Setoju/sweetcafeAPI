@@ -25,15 +25,24 @@ class User < ApplicationRecord
   before_validation :normalize_email
 
   # OAuth methods
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
-      user.password = SecureRandom.hex(20) # Set random password for OAuth users
-      user.role = "customer" # Default role for OAuth users
+  def self.from_google_oauth(google_user_info)
+    provider = "google"
+    uid = google_user_info["id"]
+
+    user = where(provider: provider, uid: uid).first_or_initialize
+
+    if user.new_record?
+      user.email = google_user_info["email"]
+      user.name = google_user_info["name"] || google_user_info["email"].split("@").first
+      user.password = SecureRandom.hex(32)
+      user.role = "customer"
     end
+
+    # Update OAuth token info on every login
+    user.oauth_token = google_user_info["access_token"]
+    user.oauth_expires_at = google_user_info["expires_at"] ? Time.at(google_user_info["expires_at"].to_i) : nil
+
+    user
   end
 
   def oauth_user?

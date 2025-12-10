@@ -6,106 +6,68 @@ module Api
       skip_before_action :authenticate_user, only: [ :google, :google_callback ]
 
       # POST /api/v1/auth/google
-      # Initiates Google OAuth flow by redirecting to Google's authorization URL
+      # Returns Google OAuth authorization URL for frontend to redirect user
       def google
-        # For API-only apps, we'll return the authorization URL
-        # The frontend will handle the redirect
-        client = Signet::OAuth2::Client.new(
-          client_id: ENV["GOOGLE_CLIENT_ID"],
-          client_secret: ENV["GOOGLE_CLIENT_SECRET"],
-          authorization_uri: "https://accounts.google.com/o/oauth2/auth",
-          scope: [ "email", "profile" ],
-          redirect_uri: google_callback_url
-        )
-
-        authorization_uri = client.authorization_uri.to_s
+        oauth_service = GoogleOauthService.new
+        authorization_url = oauth_service.authorization_url
 
         render json: {
-          authorization_url: authorization_uri,
-          message: "Redirect to this URL to authorize with Google"
+          authorization_url: authorization_url,
+          message: "Redirect user to this URL to authenticate with Google"
         }, status: :ok
+      rescue StandardError => e
+        Rails.logger.error "Google OAuth initialization error: #{e.message}"
+        render json: {
+          errors: "Failed to initialize Google OAuth",
+          details: e.message
+        }, status: :internal_server_error
       end
 
-      # GET/POST /api/v1/auth/google/callback
-      # Handles the callback from Google OAuth
+      # POST /api/v1/auth/google/callback
+      # Handles the OAuth callback with authorization code
       def google_callback
-        auth_code = params[:code]
+        code = params[:code]
 
-        unless auth_code
-          render json: { errors: "Authorization code not provided" }, status: :bad_request
+        unless code.present?
+          render json: { errors: "Authorization code is required" }, status: :bad_request
           return
         end
 
         begin
-          # Exchange authorization code for access token
-          client = Signet::OAuth2::Client.new(
-            client_id: ENV["GOOGLE_CLIENT_ID"],
-            client_secret: ENV["GOOGLE_CLIENT_SECRET"],
-            token_credential_uri: "https://oauth2.googleapis.com/token",
-            redirect_uri: google_callback_url
-          )
+          oauth_service = GoogleOauthService.new
+          google_user_info = oauth_service.authenticate(code)
 
-          client.code = auth_code
-          client.fetch_access_token!
-
-          # Get user info from Google
-          user_info = get_google_user_info(client.access_token)
-
-          # Create auth hash compatible with omniauth structure
-          auth = OpenStruct.new(
-            provider: "google_oauth2",
-            uid: user_info["id"],
-            info: OpenStruct.new(
-              email: user_info["email"],
-              name: user_info["name"]
-            ),
-            credentials: OpenStruct.new(
-              token: client.access_token,
-              expires_at: client.expires_at
-            )
-          )
-
-          # Find or create user
-          user = User.from_omniauth(auth)
+          # Find or create user from Google data
+          user = User.from_google_oauth(google_user_info)
 
           if user.save
-            token = JsonWebToken.encode(user_id: user.id)
+            # Generate JWT token for the user
+            jwt_token = JsonWebToken.encode(user_id: user.id)
+
             render json: {
-              token: token,
-              user: user_response(user),
+              token: jwt_token,
+              user: format_user_response(user),
               message: "Successfully authenticated with Google"
             }, status: :ok
           else
-            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            render json: {
+              errors: user.errors.full_messages
+            }, status: :unprocessable_entity
           end
         rescue StandardError => e
-          Rails.logger.error "Google OAuth error: #{e.message}"
-          render json: { errors: "Authentication failed: #{e.message}" }, status: :unprocessable_entity
+          Rails.logger.error "Google OAuth callback error: #{e.message}"
+          Rails.logger.error e.backtrace.join("\n")
+
+          render json: {
+            errors: "Authentication failed",
+            details: e.message
+          }, status: :unprocessable_entity
         end
       end
 
       private
 
-      def google_callback_url
-        "#{ENV['API_BASE_URL']}/api/v1/auth/google/callback"
-      end
-
-      def get_google_user_info(access_token)
-        require "net/http"
-        require "json"
-
-        uri = URI("https://www.googleapis.com/oauth2/v2/userinfo")
-        request = Net::HTTP::Get.new(uri)
-        request["Authorization"] = "Bearer #{access_token}"
-
-        response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-          http.request(request)
-        end
-
-        JSON.parse(response.body)
-      end
-
-      def user_response(user)
+      def format_user_response(user)
         {
           id: user.id,
           name: user.name,
