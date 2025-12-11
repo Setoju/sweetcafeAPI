@@ -67,7 +67,9 @@ class User < ApplicationRecord
   private
 
   def password_required?
-    !oauth_user? && (password_digest.nil? || password.present?)
+    # Check both persisted and pending changes for OAuth status
+    is_oauth = (provider.present? || provider_changed?) && (uid.present? || uid_changed?)
+    !is_oauth && (password_digest.nil? || password.present?)
   end
 
   def password_complexity
