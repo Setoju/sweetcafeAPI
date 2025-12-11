@@ -50,9 +50,19 @@ module Api
           end
         else
           # Create new cart item
+          new_quantity = (params[:total_quantity] || 1).to_i
+
+          validation_result = validate_inventory_availability(menu_item, new_quantity)
+          unless validation_result[:valid]
+            render json: {
+              errors: [ validation_result[:error] ]
+            }, status: :unprocessable_entity
+            return
+          end
+
           @cart_item = current_user.cart_items.build(
             menu_item_id: menu_item.id,
-            total_quantity: params[:total_quantity] || 1
+            total_quantity: new_quantity
           )
 
           if @cart_item.save
