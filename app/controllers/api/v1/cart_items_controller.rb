@@ -107,6 +107,7 @@ module Api
             id: menu_item.id,
             name: menu_item.name,
             size: menu_item.size,
+            discount: menu_item.discount.to_f,
             price: menu_item.price.to_f,
             available: menu_item.available,
             quantity_available: menu_item.available_quantity,
