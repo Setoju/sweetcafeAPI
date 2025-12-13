@@ -56,8 +56,8 @@ module Api
                 order_item = @order.order_items.create!(
                   menu_item: menu_item,
                   total_quantity: quantity,
-                  price: menu_item.price,
-                  subtotal: menu_item.price * quantity
+                  price: menu_item.price - (menu_item.price * menu_item.discount) / 100.0,
+                  subtotal: (menu_item.price - (menu_item.price * menu_item.discount) / 100.0) * quantity
                 )
 
                 # Reduce inventory after successful order item creation
